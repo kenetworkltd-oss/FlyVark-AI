@@ -1,0 +1,11 @@
+# Local environment variables
+.env
+*.env
+
+# Build folders
+dist/
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db
