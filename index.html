@@ -22,15 +22,24 @@
   <meta name="twitter:description" content="Scale your business operations with intelligent AI agents.">
   <meta name="twitter:image" content="https://flyvark.com/logo.png">
 
-
   <title>FlyVark AI — Autonomous AI Agents for Modern Business</title>
+  <link rel="icon" href="/logo.png" type="image/png">
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
     href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=DM+Sans:wght@300;400;500&display=swap"
     rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <script src="https://unpkg.com/lucide@0.260.0/dist/umd/lucide.js"></script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "url": "https://flyvark.com",
+  "logo": "https://flyvark.com/logo.png"
+}
+</script>
   <style>
     :root {
       --navy: #0a1128;
@@ -43,9 +52,7 @@
       --text-muted: #6b7280;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       font-family: 'DM Sans', sans-serif;
@@ -55,9 +62,7 @@
     }
 
     /* ── TYPOGRAPHY ─────────────────────────────────── */
-    .font-display {
-      font-family: 'Montserrat', sans-serif;
-    }
+    .font-display { font-family: 'Montserrat', sans-serif; }
 
     .gradient-text {
       background: linear-gradient(120deg, var(--electric) 0%, var(--royal) 60%, #5b4fff 100%);
@@ -87,6 +92,20 @@
       background: rgba(255, 255, 255, 0.92);
       backdrop-filter: blur(18px);
       box-shadow: 0 1px 0 rgba(10, 17, 40, 0.08), 0 4px 24px rgba(10, 17, 40, 0.06);
+    }
+
+    /* ── STICKY DESKTOP CTA IN HEADER ──────────────── */
+    #header-demo-cta {
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-4px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    #header.scrolled #header-demo-cta {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
     }
 
     /* ── BUTTONS ─────────────────────────────────────── */
@@ -120,9 +139,7 @@
       box-shadow: 0 8px 32px rgba(0, 210, 255, 0.35);
     }
 
-    .btn-primary:hover::after {
-      opacity: 1;
-    }
+    .btn-primary:hover::after { opacity: 1; }
 
     .btn-secondary {
       background: transparent;
@@ -142,6 +159,30 @@
     .btn-secondary:hover {
       border-color: var(--royal);
       background: rgba(58, 123, 213, 0.06);
+    }
+
+    /* ── PULSE ANIMATION FOR SARAH CTA ──────────────── */
+    @keyframes btn-pulse {
+      0%, 100% {
+        box-shadow:
+          0 0 0 0 rgba(0, 210, 255, 0.45),
+          0 8px 32px rgba(0, 210, 255, 0.3);
+      }
+      50% {
+        box-shadow:
+          0 0 0 10px rgba(0, 210, 255, 0),
+          0 8px 48px rgba(0, 210, 255, 0.5);
+      }
+    }
+
+    .btn-pulse {
+      animation: btn-pulse 2.2s ease-in-out infinite;
+    }
+
+    .btn-pulse:hover {
+      animation-play-state: paused;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(0, 210, 255, 0.5) !important;
     }
 
     /* ── HERO ────────────────────────────────────────── */
@@ -164,54 +205,35 @@
     }
 
     .shard-1 {
-      width: 340px;
-      height: 340px;
-      top: -80px;
-      right: -60px;
-      animation-delay: 0s;
-      opacity: 0.07;
+      width: 340px; height: 340px;
+      top: -80px; right: -60px;
+      animation-delay: 0s; opacity: 0.07;
       clip-path: polygon(30% 0%, 100% 20%, 100% 80%, 70% 100%, 0% 80%, 0% 20%);
     }
 
     .shard-2 {
-      width: 200px;
-      height: 200px;
-      bottom: 10%;
-      left: -50px;
-      animation-delay: 2s;
-      opacity: 0.05;
+      width: 200px; height: 200px;
+      bottom: 10%; left: -50px;
+      animation-delay: 2s; opacity: 0.05;
       clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
     }
 
     .shard-3 {
-      width: 120px;
-      height: 120px;
-      top: 30%;
-      right: 20%;
-      animation-delay: 4s;
-      opacity: 0.06;
+      width: 120px; height: 120px;
+      top: 30%; right: 20%;
+      animation-delay: 4s; opacity: 0.06;
       clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
     }
 
     .shard-4 {
-      width: 80px;
-      height: 80px;
-      top: 60%;
-      right: 35%;
-      animation-delay: 1.5s;
-      opacity: 0.08;
+      width: 80px; height: 80px;
+      top: 60%; right: 35%;
+      animation-delay: 1.5s; opacity: 0.08;
     }
 
     @keyframes float {
-
-      0%,
-      100% {
-        transform: translateY(0) rotate(0deg);
-      }
-
-      50% {
-        transform: translateY(-18px) rotate(3deg);
-      }
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-18px) rotate(3deg); }
     }
 
     /* Hero grid overlay */
@@ -223,6 +245,25 @@
         linear-gradient(rgba(0, 210, 255, 0.04) 1px, transparent 1px),
         linear-gradient(90deg, rgba(0, 210, 255, 0.04) 1px, transparent 1px);
       background-size: 48px 48px;
+    }
+
+    /* ── HERO SARAH PANEL ────────────────────────────── */
+    .hero-sarah-panel {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(0,210,255,0.18);
+      border-radius: 24px;
+      padding: 28px;
+      backdrop-filter: blur(12px);
+      position: relative;
+    }
+
+    .hero-sarah-panel::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: 25px;
+      background: linear-gradient(135deg, rgba(0,210,255,0.25), rgba(58,123,213,0.1), transparent 60%);
+      z-index: -1;
     }
 
     /* ── BENTO GRID ──────────────────────────────────── */
@@ -245,22 +286,17 @@
     .bento-card::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 0; left: 0; right: 0;
       height: 3px;
       background: linear-gradient(90deg, var(--electric), var(--royal));
       opacity: 0;
       transition: opacity 0.3s;
     }
 
-    .bento-card:hover::before {
-      opacity: 1;
-    }
+    .bento-card:hover::before { opacity: 1; }
 
     .bento-icon {
-      width: 52px;
-      height: 52px;
+      width: 52px; height: 52px;
       background: linear-gradient(135deg, rgba(0, 210, 255, 0.12), rgba(58, 123, 213, 0.12));
       border-radius: 14px;
       display: flex;
@@ -272,10 +308,8 @@
     /* Shard pattern behind bento */
     .bento-shard {
       position: absolute;
-      right: -20px;
-      bottom: -20px;
-      width: 120px;
-      height: 120px;
+      right: -20px; bottom: -20px;
+      width: 120px; height: 120px;
       opacity: 0.04;
       background: linear-gradient(135deg, var(--electric), var(--royal));
       clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
@@ -305,8 +339,7 @@
     }
 
     .service-card .service-icon {
-      width: 48px;
-      height: 48px;
+      width: 48px; height: 48px;
       background: var(--navy);
       border-radius: 12px;
       display: flex;
@@ -321,10 +354,7 @@
     }
 
     /* ── STATS BAR ───────────────────────────────────── */
-    .stat-card {
-      text-align: center;
-      padding: 32px 24px;
-    }
+    .stat-card { text-align: center; padding: 32px 24px; }
 
     .stat-number {
       font-family: 'Montserrat', sans-serif;
@@ -349,8 +379,7 @@
     .testimonial-card::before {
       content: '"';
       position: absolute;
-      top: -10px;
-      left: 24px;
+      top: -10px; left: 24px;
       font-family: 'Montserrat', sans-serif;
       font-size: 7rem;
       font-weight: 900;
@@ -366,73 +395,35 @@
       transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1), transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .reveal-delay-1 {
-      transition-delay: 0.1s;
-    }
-
-    .reveal-delay-2 {
-      transition-delay: 0.2s;
-    }
-
-    .reveal-delay-3 {
-      transition-delay: 0.3s;
-    }
-
-    .reveal-delay-4 {
-      transition-delay: 0.4s;
-    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
 
     /* ── HERO TYPING ─────────────────────────────────── */
     .cursor {
       display: inline-block;
-      width: 3px;
-      height: 1em;
+      width: 3px; height: 1em;
       background: var(--electric);
       animation: blink 1s step-end infinite;
       vertical-align: text-bottom;
     }
 
     @keyframes blink {
-
-      0%,
-      100% {
-        opacity: 1;
-      }
-
-      50% {
-        opacity: 0;
-      }
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
     }
 
     /* ── WINGMARK LOGO ───────────────────────────────── */
-    .logo-mark {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-    }
+    .logo-mark { display: inline-flex; align-items: center; gap: 10px; }
 
-    .logo-wings {
-      width: 32px;
-      height: 28px;
-      position: relative;
-      flex-shrink: 0;
-    }
+    .logo-wings { width: 32px; height: 28px; position: relative; flex-shrink: 0; }
 
-    .wing-shard {
-      position: absolute;
-      border-radius: 1px;
-    }
+    .wing-shard { position: absolute; border-radius: 1px; }
 
     /* ── GRADIENT BORDER ─────────────────────────────── */
-    .gradient-border {
-      position: relative;
-      border-radius: 20px;
-    }
+    .gradient-border { position: relative; border-radius: 20px; }
 
     .gradient-border::before {
       content: '';
@@ -449,9 +440,7 @@
     }
 
     /* ── PROCESS CONNECTOR ───────────────────────────── */
-    .process-step {
-      position: relative;
-    }
+    .process-step { position: relative; }
 
     .process-step:not(:last-child)::after {
       content: '';
@@ -465,32 +454,16 @@
     }
 
     /* ── MOBILE MENU ─────────────────────────────────── */
-    #mobile-menu {
-      display: none;
-    }
-
-    #mobile-menu.open {
-      display: block;
-    }
+    #mobile-menu { display: none; }
+    #mobile-menu.open { display: block; }
 
     /* ── FOOTER ──────────────────────────────────────── */
-    #footer {
-      background: var(--navy);
-    }
+    #footer { background: var(--navy); }
 
     /* ── SCROLLBAR ───────────────────────────────────── */
-    ::-webkit-scrollbar {
-      width: 6px;
-    }
-
-    ::-webkit-scrollbar-track {
-      background: var(--navy);
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: var(--royal);
-      border-radius: 3px;
-    }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--navy); }
+    ::-webkit-scrollbar-thumb { background: var(--royal); border-radius: 3px; }
 
     /* ── PILL BADGE ──────────────────────────────────── */
     .badge {
@@ -517,8 +490,7 @@
 
     /* ── GLOW PULSE ──────────────────────────────────── */
     .glow-dot {
-      width: 8px;
-      height: 8px;
+      width: 8px; height: 8px;
       border-radius: 50%;
       background: var(--electric);
       box-shadow: 0 0 0 3px rgba(0, 210, 255, 0.2);
@@ -527,116 +499,489 @@
     }
 
     @keyframes pulse-glow {
-
-      0%,
-      100% {
-        box-shadow: 0 0 0 3px rgba(0, 210, 255, 0.2);
-      }
-
-      50% {
-        box-shadow: 0 0 0 7px rgba(0, 210, 255, 0.08);
-      }
+      0%, 100% { box-shadow: 0 0 0 3px rgba(0, 210, 255, 0.2); }
+      50% { box-shadow: 0 0 0 7px rgba(0, 210, 255, 0.08); }
     }
 
     /* ── WAVE DIVIDER ────────────────────────────────── */
-    .wave-top {
-      position: absolute;
-      top: -1px;
-      left: 0;
-      right: 0;
-      overflow: hidden;
-      line-height: 0;
-    }
-
-    .wave-bottom {
-      position: absolute;
-      bottom: -1px;
-      left: 0;
-      right: 0;
-      overflow: hidden;
-      line-height: 0;
-      transform: rotate(180deg);
-    }
+    .wave-top { position: absolute; top: -1px; left: 0; right: 0; overflow: hidden; line-height: 0; }
+    .wave-bottom { position: absolute; bottom: -1px; left: 0; right: 0; overflow: hidden; line-height: 0; transform: rotate(180deg); }
 
     /* ── RESPONSIVE HELPERS ──────────────────────────── */
     @media(max-width: 768px) {
-      .process-step:not(:last-child)::after {
-        display: none;
+      .process-step:not(:last-child)::after { display: none; }
+    }
+
+    /* ── MEET SARAH ──────────────────────────────────── */
+    #meet-sarah {
+      background: var(--navy);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #meet-sarah::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0, 210, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 210, 255, 0.03) 1px, transparent 1px);
+      background-size: 52px 52px;
+      pointer-events: none;
+    }
+
+    .sarah-avatar-ring {
+      width: 260px; height: 260px;
+      border-radius: 50%;
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      flex-shrink: 0;
+      padding: 4px;
+      background: linear-gradient(135deg, var(--electric), var(--royal));
+      animation: sarah-pulse 3s ease-in-out infinite;
+    }
+
+    .sarah-avatar-inner {
+      width: 100%; height: 100%;
+      border-radius: 50%;
+      overflow: hidden;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .sarah-photo {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 50%;
+      display: block;
+    }
+
+    .sarah-avatar-ring::before {
+      content: '';
+      position: absolute;
+      inset: -12px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(0, 210, 255, 0.3);
+      animation: sarah-ring 3s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .sarah-avatar-ring::after {
+      content: '';
+      position: absolute;
+      inset: -26px;
+      border-radius: 50%;
+      border: 1px solid rgba(0, 210, 255, 0.13);
+      animation: sarah-ring 3s ease-in-out infinite 0.5s;
+      pointer-events: none;
+    }
+
+    /* Smaller variant for hero panel */
+    .sarah-avatar-ring.sm {
+      width: 140px; height: 140px;
+    }
+
+    @keyframes sarah-pulse {
+      0%, 100% {
+        box-shadow:
+          0 0 0 0 rgba(0, 210, 255, 0),
+          0 0 30px rgba(0, 210, 255, 0.35),
+          0 0 60px rgba(58, 123, 213, 0.2);
       }
+      50% {
+        box-shadow:
+          0 0 0 6px rgba(0, 210, 255, 0.08),
+          0 0 55px rgba(0, 210, 255, 0.55),
+          0 0 100px rgba(58, 123, 213, 0.3);
+      }
+    }
+
+    @keyframes sarah-ring {
+      0%, 100% { opacity: 0.45; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.045); }
+    }
+
+    .sarah-feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 16px 20px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: background 0.25s, border-color 0.25s;
+    }
+
+    .sarah-feature-item:hover {
+      background: rgba(0, 210, 255, 0.07);
+      border-color: rgba(0, 210, 255, 0.25);
+    }
+
+    .sarah-feature-icon {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, rgba(0, 210, 255, 0.15), rgba(58, 123, 213, 0.15));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .sarah-live-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(0, 210, 255, 0.1);
+      border: 1px solid rgba(0, 210, 255, 0.3);
+      color: var(--electric);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 5px 12px 5px 10px;
+      border-radius: 100px;
+    }
+
+    /* ── PRICING CARDS ───────────────────────────────── */
+    #pricing { background: var(--off-white); }
+
+    .pricing-card {
+      background: var(--white);
+      border-radius: 24px;
+      border: 1.5px solid rgba(58, 123, 213, 0.15);
+      box-shadow:
+        0 4px 20px rgba(10, 17, 40, 0.06),
+        0 0 0 1px rgba(0, 210, 255, 0.04),
+        0 8px 40px rgba(58, 123, 213, 0.08);
+      padding: 44px 40px;
+      position: relative;
+      overflow: hidden;
+      transition:
+        transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+        border-color 0.35s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(0, 210, 255, 0.35);
+      box-shadow:
+        0 0 0 1.5px rgba(0, 210, 255, 0.25),
+        0 12px 40px rgba(0, 210, 255, 0.15),
+        0 24px 64px rgba(58, 123, 213, 0.2),
+        0 40px 80px rgba(10, 17, 40, 0.12);
+    }
+
+    .pricing-card.featured {
+      background: var(--navy);
+      border-color: transparent;
+      box-shadow:
+        0 0 0 2px var(--electric),
+        0 0 0 5px rgba(0, 210, 255, 0.12),
+        0 16px 48px rgba(0, 210, 255, 0.3),
+        0 32px 80px rgba(58, 123, 213, 0.25),
+        0 48px 100px rgba(10, 17, 40, 0.4);
+    }
+
+    .pricing-card.featured:hover {
+      transform: translateY(-10px);
+      box-shadow:
+        0 0 0 2px var(--electric),
+        0 0 0 8px rgba(0, 210, 255, 0.14),
+        0 20px 60px rgba(0, 210, 255, 0.45),
+        0 40px 100px rgba(58, 123, 213, 0.35),
+        0 60px 120px rgba(10, 17, 40, 0.5);
+    }
+
+    .pricing-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--electric), var(--royal), #5b4fff);
+      opacity: 0;
+      transition: opacity 0.35s;
+    }
+
+    .pricing-card:hover::before { opacity: 1; }
+
+    .pricing-card.featured::before {
+      opacity: 1;
+      height: 3px;
+      background: linear-gradient(90deg, var(--electric), var(--royal));
+    }
+
+    .pricing-card.featured::after {
+      content: '';
+      position: absolute;
+      bottom: -60px; left: 50%;
+      transform: translateX(-50%);
+      width: 200px; height: 120px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(0, 210, 255, 0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .pricing-feature-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(10, 17, 40, 0.06);
+      font-size: 0.9rem;
+    }
+
+    .pricing-card.featured .pricing-feature-item {
+      border-bottom-color: rgba(255, 255, 255, 0.07);
+    }
+
+    .pricing-feature-item:last-child { border-bottom: none; }
+
+    .pricing-check {
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--electric), var(--royal));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 2px 8px rgba(0, 210, 255, 0.3);
+    }
+
+    .popular-badge {
+      position: absolute;
+      top: 20px; right: 20px;
+      background: linear-gradient(135deg, var(--electric), var(--royal));
+      color: var(--navy);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 100px;
+      box-shadow: 0 4px 16px rgba(0, 210, 255, 0.4);
+    }
+
+    /* ── FAQ ACCORDION ───────────────────────────────── */
+    #faq { background: var(--white); }
+
+    .faq-item {
+      border: 1.5px solid rgba(10, 17, 40, 0.09);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: border-color 0.25s, box-shadow 0.25s;
+    }
+
+    .faq-item.open {
+      border-color: rgba(0, 210, 255, 0.4);
+      box-shadow: 0 4px 24px rgba(0, 210, 255, 0.08);
+    }
+
+    .faq-trigger {
+      width: 100%;
+      text-align: left;
+      padding: 22px 28px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--navy);
+      transition: background 0.2s;
+    }
+
+    .faq-trigger:hover { background: rgba(10, 17, 40, 0.02); }
+
+    .faq-icon {
+      width: 32px; height: 32px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, rgba(0, 210, 255, 0.1), rgba(58, 123, 213, 0.1));
+      border: 1px solid rgba(0, 210, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: transform 0.3s, background 0.3s;
+    }
+
+    .faq-item.open .faq-icon {
+      background: linear-gradient(135deg, var(--electric), var(--royal));
+      transform: rotate(45deg);
+    }
+
+    .faq-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .faq-item.open .faq-body { max-height: 300px; }
+
+    .faq-body-inner {
+      padding: 0 28px 24px;
+      font-size: 0.95rem;
+      line-height: 1.75;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(10, 17, 40, 0.06);
+      padding-top: 18px;
+    }
+
+    /* ── STICKY MOBILE FOOTER CTA ────────────────────── */
+    #sticky-mobile-cta {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 200;
+      padding: 12px 20px;
+      background: rgba(10, 17, 40, 0.97);
+      backdrop-filter: blur(16px);
+      border-top: 1px solid rgba(0,210,255,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      transform: translateY(100%);
+      transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    #sticky-mobile-cta.visible {
+      transform: translateY(0);
+    }
+
+    #sticky-mobile-cta a {
+      flex: 1;
+      max-width: 320px;
+      text-align: center;
+      justify-content: center;
+    }
+
+    /* Only show on mobile */
+    @media (min-width: 768px) {
+      #sticky-mobile-cta { display: none !important; }
+    }
+
+    /* Only show on desktop (via header) */
+    @media (max-width: 767px) {
+      #header-demo-cta { display: none !important; }
+    }
+
+    @media(max-width: 640px) {
+      .sarah-avatar-ring { width: 180px; height: 180px; }
+      .sarah-avatar-ring.sm { width: 100px; height: 100px; }
+      .pricing-card { padding: 32px 24px; }
+      .faq-trigger { padding: 18px 20px; font-size: 0.9rem; }
+      .faq-body-inner { padding: 0 20px 20px; padding-top: 14px; }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- ════════════════════════════════════════════════════
-     HEADER
+<!-- ════════════════════════════════════════════════════
+   STICKY MOBILE FOOTER CTA
 ════════════════════════════════════════════════════ -->
-  <header id="header" class="py-4">
-    <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
+<div id="sticky-mobile-cta">
+  <a href="tel:+12164129541" class="btn-primary btn-pulse text-sm">
+    <i data-lucide="phone-call" class="w-4 h-4"></i>
+    Test Sarah Now
+  </a>
+  <button id="sticky-close" aria-label="Close"
+    style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:8px; width:36px; height:36px; display:flex; align-items:center; justify-content:center; flex-shrink:0; cursor:pointer;">
+    <i data-lucide="x" class="w-4 h-4 text-white" style="color:#fff;"></i>
+  </button>
+</div>
 
-      <!-- Logo -->
-      <a href="#" class="logo-mark">
-        <!-- SVG Wing Shards -->
-        <img src="logo.png" alt="FlyVark AI Logo" class="h-16 w-auto object-contain py-1">
-        <span class="font-display font-800 text-xl tracking-tight" style="color: var(--navy); font-weight: 800;">
-          FlyVark<span class="gradient-text"> AI</span>
-        </span>
 
+<!-- ════════════════════════════════════════════════════
+   HEADER
+════════════════════════════════════════════════════ -->
+<header id="header" class="py-4">
+  <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
+
+    <!-- Logo -->
+    <a href="#" class="logo-mark">
+      <img src="logo.png" alt="FlyVark AI Logo" class="h-16 w-auto object-contain py-1">
+      <span class="font-display font-800 text-xl tracking-tight" style="color: var(--navy); font-weight: 800;">
+        FlyVark<span class="gradient-text"> AI</span>
+      </span>
+    </a>
+
+    <!-- Desktop Nav -->
+    <nav class="hidden md:flex items-center gap-6">
+      <a href="#solutions" class="text-sm font-medium text-gray-600 hover:text-navy transition-colors">Solutions</a>
+      <a href="#how-it-works" class="text-sm font-medium text-gray-600 hover:text-navy transition-colors">How It Works</a>
+      <a href="#services" class="text-sm font-medium text-gray-600 hover:text-navy transition-colors">Services</a>
+      <a href="#testimonials" class="text-sm font-medium text-gray-600 hover:text-navy transition-colors">Clients</a>
+      <a href="#pricing" class="text-sm font-medium text-gray-600 hover:text-navy transition-colors">Pricing</a>
+
+      <!-- Sticky Desktop Demo CTA — appears on scroll -->
+      <a id="header-demo-cta" href="tel:+12164129541" class="btn-primary btn-pulse text-sm py-2.5 px-5">
+        <i data-lucide="phone-call" class="w-4 h-4"></i>
+         Test Sarah Now
       </a>
 
-      <!-- Desktop Nav -->
-      <nav class="hidden md:flex items-center gap-8">
-        <a href="#solutions" class="text-sm font-medium text-gray-600 hover:text-navy transition-colors"
-          style="--tw-text-opacity:1;">Solutions</a>
-        <a href="#how-it-works" class="text-sm font-medium text-gray-600 hover:text-navy transition-colors">How It
-          Works</a>
-        <a href="#services" class="text-sm font-medium text-gray-600 hover:text-navy transition-colors">Services</a>
-        <a href="#testimonials" class="text-sm font-medium text-gray-600 hover:text-navy transition-colors">Clients</a>
-        <a href="#contact" class="btn-primary text-sm py-2.5 px-5">
-          <span>Get Started</span>
-          <i data-lucide="arrow-right" class="w-4 h-4"></i>
-        </a>
-      </nav>
+      <a href="#contact" class="btn-secondary text-sm py-2.5 px-5">
+        <span>Get Started</span>
+        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+      </a>
+    </nav>
 
-      <!-- Mobile Hamburger -->
-      <button id="menu-toggle" class="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
-        aria-label="Toggle menu">
-        <i data-lucide="menu" class="w-5 h-5" style="color:var(--navy)"></i>
-      </button>
+    <!-- Mobile Hamburger -->
+    <button id="menu-toggle" class="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors" aria-label="Toggle menu">
+      <i data-lucide="menu" class="w-5 h-5" style="color:var(--navy)"></i>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="md:hidden bg-white border-t border-gray-100 shadow-lg">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-3">
+      <a href="#solutions" class="py-2 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors mobile-link">Solutions</a>
+      <a href="#how-it-works" class="py-2 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors mobile-link">How It Works</a>
+      <a href="#services" class="py-2 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors mobile-link">Services</a>
+      <a href="#testimonials" class="py-2 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors mobile-link">Clients</a>
+      <a href="#pricing" class="py-2 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors mobile-link">Pricing</a>
+      <a href="tel:+12164129541" class="btn-primary btn-pulse text-sm text-center mt-2 justify-center">
+        <i data-lucide="phone-call" class="w-4 h-4"></i>
+          Test Sarah Now
+      </a>
+      <a href="#contact" class="btn-secondary text-sm text-center mt-1 justify-center">Get Started</a>
     </div>
-
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="md:hidden bg-white border-t border-gray-100 shadow-lg">
-      <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-3">
-        <a href="#solutions"
-          class="py-2 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors mobile-link">Solutions</a>
-        <a href="#how-it-works"
-          class="py-2 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors mobile-link">How It
-          Works</a>
-        <a href="#services"
-          class="py-2 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors mobile-link">Services</a>
-        <a href="#testimonials"
-          class="py-2 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors mobile-link">Clients</a>
-        <a href="#contact" class="btn-primary text-sm text-center mt-2">Get Started</a>
-      </div>
-    </div>
-  </header>
+  </div>
+</header>
 
 
-  <!-- ════════════════════════════════════════════════════
-     HERO SECTION
+<!-- ════════════════════════════════════════════════════
+   HERO SECTION — with Sarah Demo integrated
 ════════════════════════════════════════════════════ -->
-  <section id="hero">
-    <!-- Geometric Shards -->
-    <div class="shard shard-1"></div>
-    <div class="shard shard-2"></div>
-    <div class="shard shard-3"></div>
-    <div class="shard shard-4"></div>
+<section id="hero">
+  <!-- Geometric Shards -->
+  <div class="shard shard-1"></div>
+  <div class="shard shard-2"></div>
+  <div class="shard shard-3"></div>
+  <div class="shard shard-4"></div>
 
-    <div class="max-w-7xl mx-auto px-6 py-32 md:py-40 relative z-10">
-      <div class="max-w-4xl">
+  <div class="max-w-7xl mx-auto px-6 py-28 md:py-36 relative z-10 w-full">
+    <!-- 2-column grid: left = copy, right = Sarah demo panel -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
+      <!-- LEFT — Main Headline + CTAs -->
+      <div>
         <!-- Badge -->
         <div class="badge mb-8 inline-flex">
           <span class="glow-dot"></span>
@@ -645,19 +990,19 @@
 
         <!-- Main Headline -->
         <h1 class="font-display font-900 leading-none mb-6"
-          style="font-size: clamp(2.8rem, 7vw, 5.5rem); font-weight: 900; color: white;">
+          style="font-size: clamp(2.8rem, 6vw, 5rem); font-weight: 900; color: white;">
           Autonomous AI Agents<br />
           <span class="gradient-text">for Modern Business.</span>
         </h1>
 
         <!-- Slogan -->
-        <p class="font-display font-700 text-2xl md:text-3xl mb-6 tracking-widest uppercase"
-          style="color: rgba(255,255,255,0.35); letter-spacing: 0.18em; font-size: clamp(1rem, 2.5vw, 1.5rem);">
+        <p class="font-display font-700 mb-6 tracking-widest uppercase"
+          style="color: rgba(255,255,255,0.35); letter-spacing: 0.18em; font-size: clamp(0.9rem, 2vw, 1.3rem);">
           Discover.&nbsp;&nbsp;Build.&nbsp;&nbsp;Scale.
         </p>
 
         <!-- Description -->
-        <p class="text-lg md:text-xl mb-10 leading-relaxed max-w-2xl" style="color: rgba(255,255,255,0.65);">
+        <p class="text-lg mb-10 leading-relaxed max-w-xl" style="color: rgba(255,255,255,0.65);">
           FlyVark AI deploys intelligent agentic workflows that automate your operations, accelerate decision-making,
           and compound value across every layer of your enterprise.
         </p>
@@ -676,7 +1021,7 @@
         </div>
 
         <!-- Social Proof Strip -->
-        <div class="mt-14 pt-10 border-t border-white/10 flex flex-wrap gap-x-10 gap-y-4 items-center">
+        <div class="mt-12 pt-8 border-t border-white/10 flex flex-wrap gap-x-8 gap-y-3 items-center">
           <span class="text-sm" style="color:rgba(255,255,255,0.4)">Trusted by teams at</span>
           <span class="font-display font-700 text-white/60 text-sm tracking-widest">NEXALABS</span>
           <span class="font-display font-700 text-white/60 text-sm tracking-widest">COREBRIDGE</span>
@@ -684,451 +1029,864 @@
           <span class="font-display font-700 text-white/60 text-sm tracking-widest">SYNDICATE</span>
         </div>
       </div>
-    </div>
-  </section>
 
-
-  <!-- ════════════════════════════════════════════════════
-     STATS BAR
-════════════════════════════════════════════════════ -->
-  <section
-    style="background: var(--off-white); border-top: 1px solid rgba(10,17,40,0.06); border-bottom: 1px solid rgba(10,17,40,0.06);">
-    <div class="max-w-7xl mx-auto px-6 py-4">
-      <div class="grid grid-cols-2 md:grid-cols-4 divide-x divide-gray-200">
-        <div class="stat-card reveal">
-          <div class="stat-number">97%</div>
-          <p class="text-sm font-medium mt-1" style="color:var(--text-muted)">Task Automation Rate</p>
-        </div>
-        <div class="stat-card reveal reveal-delay-1">
-          <div class="stat-number">14×</div>
-          <p class="text-sm font-medium mt-1" style="color:var(--text-muted)">Faster Time-to-Insight</p>
-        </div>
-        <div class="stat-card reveal reveal-delay-2">
-          <div class="stat-number">$2.4M</div>
-          <p class="text-sm font-medium mt-1" style="color:var(--text-muted)">Avg. Annual Cost Savings</p>
-        </div>
-        <div class="stat-card reveal reveal-delay-3">
-          <div class="stat-number">300+</div>
-          <p class="text-sm font-medium mt-1" style="color:var(--text-muted)">Enterprise Deployments</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ════════════════════════════════════════════════════
-     VARK BENTO GRID — PHASES
-════════════════════════════════════════════════════ -->
-  <section id="solutions" class="py-24 md:py-32" style="background: var(--white);">
-    <div class="max-w-7xl mx-auto px-6">
-
-      <!-- Section Header -->
-      <div class="text-center mb-16">
-        <div class="badge badge-navy mb-5 inline-flex">The FlyVark Method</div>
-        <h2 class="font-display font-900 mb-5 reveal"
-          style="font-size: clamp(2rem, 4.5vw, 3.25rem); font-weight: 900; color: var(--navy);">
-          Three Phases.<br /><span class="gradient-text">Infinite Leverage.</span>
-        </h2>
-        <p class="text-lg max-w-2xl mx-auto reveal reveal-delay-1" style="color:var(--text-muted);">
-          Every FlyVark engagement follows a battle-tested framework engineered to move from insight to impact — faster
-          than any traditional approach.
-        </p>
-      </div>
-
-      <!-- Bento Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-5">
-
-        <!-- Phase 1: Discover — Large Card -->
-        <div class="bento-card lg:col-span-2 reveal">
-          <div class="bento-shard"></div>
-          <div class="bento-icon">
-            <i data-lucide="search" class="w-6 h-6" style="color:var(--electric)"></i>
-          </div>
-          <div class="badge mb-4">Phase 01</div>
-          <h3 class="font-display font-800 text-2xl md:text-3xl mb-3" style="font-weight:800; color:var(--navy);">The
-            Discovery Phase</h3>
-          <p class="text-base leading-relaxed mb-6" style="color:var(--text-muted);">
-            Before a single agent is built, our intelligence layer maps your organization's data flows, bottlenecks, and
-            untapped automation opportunities. We surface the exact workflows where AI generates the highest ROI — with
-            evidence, not guesswork.
-          </p>
-          <div class="grid grid-cols-2 gap-3">
-            <div class="flex items-center gap-2.5">
-              <div class="w-2 h-2 rounded-full flex-shrink-0" style="background:var(--electric)"></div>
-              <span class="text-sm font-medium" style="color:var(--navy)">Process Archaeology</span>
-            </div>
-            <div class="flex items-center gap-2.5">
-              <div class="w-2 h-2 rounded-full flex-shrink-0" style="background:var(--royal)"></div>
-              <span class="text-sm font-medium" style="color:var(--navy)">ROI Opportunity Mapping</span>
-            </div>
-            <div class="flex items-center gap-2.5">
-              <div class="w-2 h-2 rounded-full flex-shrink-0" style="background:var(--electric)"></div>
-              <span class="text-sm font-medium" style="color:var(--navy)">Data Landscape Audit</span>
-            </div>
-            <div class="flex items-center gap-2.5">
-              <div class="w-2 h-2 rounded-full flex-shrink-0" style="background:var(--royal)"></div>
-              <span class="text-sm font-medium" style="color:var(--navy)">Stakeholder Intelligence</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Phase 2: Build — Tall Card -->
-        <div class="bento-card reveal reveal-delay-1"
-          style="background: linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 100%); border-color: rgba(0,210,255,0.15);">
-          <div class="bento-shard" style="opacity:0.12; background: linear-gradient(135deg, #00d2ff, #fff);"></div>
-          <div class="bento-icon" style="background: rgba(0,210,255,0.1);">
-            <i data-lucide="cpu" class="w-6 h-6" style="color:var(--electric)"></i>
-          </div>
-          <div class="badge mb-4">Phase 02</div>
-          <h3 class="font-display font-800 text-2xl mb-3" style="font-weight:800; color:#fff;">The Build Phase</h3>
-          <p class="text-base leading-relaxed" style="color:rgba(255,255,255,0.6);">
-            Our engineering squads architect and deploy custom AI agents — trained on your domain, integrated into your
-            stack, and governed by your compliance requirements. No off-the-shelf templates. Pure precision.
-          </p>
-          <div class="mt-6 pt-6 border-t border-white/10">
-            <p class="text-sm font-display font-700 uppercase tracking-widest mb-3"
-              style="color:rgba(255,255,255,0.35);">Stack Integrations</p>
-            <div class="flex flex-wrap gap-2">
-              <span class="text-xs px-2.5 py-1 rounded-full font-medium"
-                style="background:rgba(0,210,255,0.1); color:var(--electric); border:1px solid rgba(0,210,255,0.2);">LangChain</span>
-              <span class="text-xs px-2.5 py-1 rounded-full font-medium"
-                style="background:rgba(0,210,255,0.1); color:var(--electric); border:1px solid rgba(0,210,255,0.2);">AutoGen</span>
-              <span class="text-xs px-2.5 py-1 rounded-full font-medium"
-                style="background:rgba(0,210,255,0.1); color:var(--electric); border:1px solid rgba(0,210,255,0.2);">Crew
-                AI</span>
-              <span class="text-xs px-2.5 py-1 rounded-full font-medium"
-                style="background:rgba(0,210,255,0.1); color:var(--electric); border:1px solid rgba(0,210,255,0.2);">GPT-4o</span>
-              <span class="text-xs px-2.5 py-1 rounded-full font-medium"
-                style="background:rgba(0,210,255,0.1); color:var(--electric); border:1px solid rgba(0,210,255,0.2);">Claude</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Bottom Row -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-
-        <!-- Phase 3: Scale -->
-        <div class="bento-card md:col-span-2 reveal">
-          <div class="bento-shard"></div>
-          <div class="bento-icon">
-            <i data-lucide="trending-up" class="w-6 h-6" style="color:var(--electric)"></i>
-          </div>
-          <div class="badge mb-4">Phase 03</div>
-          <h3 class="font-display font-800 text-2xl mb-3" style="font-weight:800; color:var(--navy);">The Scale Phase
-          </h3>
-          <p class="text-base leading-relaxed mb-5" style="color:var(--text-muted);">
-            Once deployed, FlyVark agents learn continuously — improving through every interaction. Our MLOps
-            infrastructure ensures zero-downtime scaling from pilot to enterprise-wide rollout, with real-time
-            performance dashboards and SLA guarantees.
-          </p>
-          <div class="flex items-center gap-4">
-            <div class="flex-1 bg-gray-100 rounded-full h-2">
-              <div class="h-2 rounded-full"
-                style="width:87%; background: linear-gradient(90deg, var(--electric), var(--royal))"></div>
-            </div>
-            <span class="text-sm font-display font-700" style="color:var(--navy)">87% Avg. Efficiency Gain</span>
-          </div>
-        </div>
-
-        <!-- Wing Visual Card -->
-        <div class="bento-card text-center flex flex-col items-center justify-center reveal reveal-delay-2"
-          style="background: var(--off-white); min-height: 200px;">
-          <svg width="80" height="72" viewBox="0 0 36 32" fill="none" xmlns="http://www.w3.org/2000/svg"
-            style="opacity:0.85">
-            <defs>
-              <linearGradient id="bg1" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#00d2ff" />
-                <stop offset="100%" stop-color="#3a7bd5" />
-              </linearGradient>
-              <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#3a7bd5" />
-                <stop offset="100%" stop-color="#00d2ff" />
-              </linearGradient>
-            </defs>
-            <polygon points="0,16 10,4 14,16 10,28" fill="url(#bg1)" opacity="0.9" />
-            <polygon points="6,10 16,2 18,14 10,16" fill="url(#bg1)" opacity="0.7" />
-            <polygon points="6,22 16,30 18,18 10,16" fill="url(#bg1)" opacity="0.5" />
-            <polygon points="36,16 26,4 22,16 26,28" fill="url(#bg2)" opacity="0.9" />
-            <polygon points="30,10 20,2 18,14 26,16" fill="url(#bg2)" opacity="0.7" />
-            <polygon points="30,22 20,30 18,18 26,16" fill="url(#bg2)" opacity="0.5" />
-            <ellipse cx="18" cy="16" rx="4" ry="7" fill="#0a1128" />
-            <ellipse cx="18" cy="16" rx="2" ry="4" fill="url(#bg1)" opacity="0.6" />
-          </svg>
-          <p class="font-display font-800 text-sm mt-4 tracking-widest uppercase"
-            style="color:var(--navy); font-weight:800; letter-spacing:0.15em;">Discover.<br />Build.<br />Scale.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ════════════════════════════════════════════════════
-     HOW IT WORKS — PROCESS
-════════════════════════════════════════════════════ -->
-  <section id="how-it-works" class="py-24" style="background:var(--navy); position:relative; overflow:hidden;">
-    <!-- Background grid -->
-    <div
-      style="position:absolute;inset:0;background-image:linear-gradient(rgba(0,210,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,210,255,0.03) 1px,transparent 1px);background-size:60px 60px;">
-    </div>
-
-    <div class="max-w-7xl mx-auto px-6 relative z-10">
-      <div class="text-center mb-16">
-        <div class="badge mb-5">How It Works</div>
-        <h2 class="font-display font-900 text-white mb-4 reveal"
-          style="font-size: clamp(2rem, 4.5vw, 3.25rem); font-weight:900;">
-          From Zero to <span class="gradient-text">Autonomous</span><br />in 90 Days.
-        </h2>
-        <p class="text-lg max-w-xl mx-auto reveal reveal-delay-1" style="color:rgba(255,255,255,0.55);">
-          A structured engagement model designed to deliver measurable value at every milestone.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-        <!-- Step 1 -->
-        <div class="process-step text-center reveal">
-          <div
-            class="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-5 font-display font-800 text-sm"
-            style="background:linear-gradient(135deg, var(--electric), var(--royal)); color:#fff; font-weight:800;">01
-          </div>
-          <h4 class="font-display font-700 text-white mb-2" style="font-weight:700;">Intake & Audit</h4>
-          <p class="text-sm leading-relaxed" style="color:rgba(255,255,255,0.5);">Deep-dive assessment of your
-            workflows, data infrastructure, and automation readiness.</p>
-        </div>
-        <!-- Step 2 -->
-        <div class="process-step text-center reveal reveal-delay-1">
-          <div
-            class="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-5 font-display font-800 text-sm"
-            style="background:linear-gradient(135deg, var(--electric), var(--royal)); color:#fff; font-weight:800;">02
-          </div>
-          <h4 class="font-display font-700 text-white mb-2" style="font-weight:700;">Agent Design</h4>
-          <p class="text-sm leading-relaxed" style="color:rgba(255,255,255,0.5);">Co-create agent architecture, define
-            task graphs, and align on success metrics and KPIs.</p>
-        </div>
-        <!-- Step 3 -->
-        <div class="process-step text-center reveal reveal-delay-2">
-          <div
-            class="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-5 font-display font-800 text-sm"
-            style="background:linear-gradient(135deg, var(--electric), var(--royal)); color:#fff; font-weight:800;">03
-          </div>
-          <h4 class="font-display font-700 text-white mb-2" style="font-weight:700;">Pilot Deployment</h4>
-          <p class="text-sm leading-relaxed" style="color:rgba(255,255,255,0.5);">Launch a contained, production-grade
-            pilot. Measure, iterate, and validate ROI within 30 days.</p>
-        </div>
-        <!-- Step 4 -->
-        <div class="process-step text-center reveal reveal-delay-3">
-          <div
-            class="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-5 font-display font-800 text-sm"
-            style="background:linear-gradient(135deg, var(--electric), var(--royal)); color:#fff; font-weight:800;">04
-          </div>
-          <h4 class="font-display font-700 text-white mb-2" style="font-weight:700;">Enterprise Scale</h4>
-          <p class="text-sm leading-relaxed" style="color:rgba(255,255,255,0.5);">Roll out across business units with
-            governance, monitoring, and continuous model improvement.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ════════════════════════════════════════════════════
-     SERVICE CARDS
-════════════════════════════════════════════════════ -->
-  <section id="services" class="py-24 md:py-32" style="background:var(--white);">
-    <div class="max-w-7xl mx-auto px-6">
-
-      <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
-        <div>
-          <div class="badge badge-navy mb-5">Our Services</div>
-          <h2 class="font-display font-900 reveal"
-            style="font-size: clamp(2rem, 4.5vw, 3.25rem); font-weight:900; color:var(--navy);">
-            Every Capability You Need<br /><span class="gradient-text">to Go Autonomous.</span>
-          </h2>
-        </div>
-        <p class="max-w-sm text-base reveal reveal-delay-1" style="color:var(--text-muted);">
-          Purpose-built AI services that integrate into your existing tech stack and deliver results without disrupting
-          operations.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-        <!-- Card 1 -->
-        <div class="service-card reveal">
-          <div class="service-icon"><i data-lucide="bot" class="w-5 h-5 text-white"></i></div>
-          <h3 class="font-display font-700 text-lg mb-2" style="font-weight:700; color:var(--navy);">Agentic Workflow
-            Automation</h3>
-          <p class="text-sm leading-relaxed mb-5" style="color:var(--text-muted);">Deploy multi-step AI agents that
-            handle end-to-end processes — from data ingestion to decision execution — without human intervention.</p>
-          <a href="#contact" class="text-sm font-display font-700 gradient-text flex items-center gap-1.5"
-            style="font-weight:700;">
-            Learn More <i data-lucide="arrow-right" class="w-3.5 h-3.5" style="stroke:var(--royal)"></i>
-          </a>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="service-card reveal reveal-delay-1">
-          <div class="service-icon"><i data-lucide="brain-circuit" class="w-5 h-5 text-white"></i></div>
-          <h3 class="font-display font-700 text-lg mb-2" style="font-weight:700; color:var(--navy);">Enterprise LLM
-            Integration</h3>
-          <p class="text-sm leading-relaxed mb-5" style="color:var(--text-muted);">Securely embed frontier language
-            models into your enterprise applications with custom RAG pipelines, fine-tuning, and compliance guardrails.
-          </p>
-          <a href="#contact" class="text-sm font-display font-700 gradient-text flex items-center gap-1.5"
-            style="font-weight:700;">
-            Learn More <i data-lucide="arrow-right" class="w-3.5 h-3.5" style="stroke:var(--royal)"></i>
-          </a>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="service-card reveal reveal-delay-2">
-          <div class="service-icon"><i data-lucide="line-chart" class="w-5 h-5 text-white"></i></div>
-          <h3 class="font-display font-700 text-lg mb-2" style="font-weight:700; color:var(--navy);">Predictive
-            Intelligence Layer</h3>
-          <p class="text-sm leading-relaxed mb-5" style="color:var(--text-muted);">Move beyond dashboards. FlyVark's
-            predictive models surface forward-looking signals, enabling proactive decisions before problems arise.</p>
-          <a href="#contact" class="text-sm font-display font-700 gradient-text flex items-center gap-1.5"
-            style="font-weight:700;">
-            Learn More <i data-lucide="arrow-right" class="w-3.5 h-3.5" style="stroke:var(--royal)"></i>
-          </a>
-        </div>
-
-        <!-- Card 4 -->
-        <div class="service-card reveal">
-          <div class="service-icon"><i data-lucide="shield-check" class="w-5 h-5 text-white"></i></div>
-          <h3 class="font-display font-700 text-lg mb-2" style="font-weight:700; color:var(--navy);">AI Governance &
-            Compliance</h3>
-          <p class="text-sm leading-relaxed mb-5" style="color:var(--text-muted);">Implement robust AI oversight
-            frameworks aligned with ISO 42001, EU AI Act, and SOC 2 — ensuring your deployments remain auditable and
-            ethical.</p>
-          <a href="#contact" class="text-sm font-display font-700 gradient-text flex items-center gap-1.5"
-            style="font-weight:700;">
-            Learn More <i data-lucide="arrow-right" class="w-3.5 h-3.5" style="stroke:var(--royal)"></i>
-          </a>
-        </div>
-
-        <!-- Card 5 -->
-        <div class="service-card reveal reveal-delay-1">
-          <div class="service-icon"><i data-lucide="git-branch" class="w-5 h-5 text-white"></i></div>
-          <h3 class="font-display font-700 text-lg mb-2" style="font-weight:700; color:var(--navy);">Multi-Agent
-            Orchestration</h3>
-          <p class="text-sm leading-relaxed mb-5" style="color:var(--text-muted);">Coordinate fleets of specialized
-            agents working in parallel — each focused on a discrete task, collectively delivering outcomes at enterprise
-            velocity.</p>
-          <a href="#contact" class="text-sm font-display font-700 gradient-text flex items-center gap-1.5"
-            style="font-weight:700;">
-            Learn More <i data-lucide="arrow-right" class="w-3.5 h-3.5" style="stroke:var(--royal)"></i>
-          </a>
-        </div>
-
-        <!-- Card 6 — CTA -->
-        <div class="service-card reveal reveal-delay-2 flex flex-col justify-between"
-          style="background: linear-gradient(160deg, var(--navy) 0%, #0d1f4a 100%); border-color: rgba(0,210,255,0.2);">
+      <!-- RIGHT — Sarah Demo Panel (immediate conversion) -->
+      <div class="hero-sarah-panel">
+        <!-- Panel Header -->
+        <div class="flex items-center justify-between mb-5">
           <div>
-            <div class="service-icon" style="background: rgba(0,210,255,0.1);">
-              <i data-lucide="rocket" class="w-5 h-5" style="color:var(--electric)"></i>
+            <div class="sarah-live-badge">
+              <span class="glow-dot" style="width:6px;height:6px;"></span>
+              Sarah — Live Now
             </div>
-            <h3 class="font-display font-700 text-lg mb-2" style="font-weight:700; color:#fff;">Ready to Fly?</h3>
-            <p class="text-sm leading-relaxed mb-6" style="color:rgba(255,255,255,0.55);">Book a free 45-minute AI
-              Strategy Session. We'll map your highest-value automation opportunities — no pitch, just value.</p>
           </div>
-          <a href="#contact" class="btn-primary text-sm w-full text-center justify-center">
-            Book Strategy Call
-            <i data-lucide="calendar" class="w-4 h-4"></i>
-          </a>
+          <span class="text-xs" style="color:rgba(255,255,255,0.3);">AI Receptionist Demo</span>
+        </div>
+
+        <!-- Avatar + Name row -->
+        <div class="flex items-center gap-5 mb-6">
+          <div class="sarah-avatar-ring sm" style="width:90px;height:90px;padding:3px;">
+            <div class="sarah-avatar-inner">
+              <img src="Sarah.png" alt="Sarah — FlyVark AI Receptionist" class="sarah-photo" />
+            </div>
+          </div>
+          <div>
+            <h3 class="font-display font-900 text-white text-xl mb-1" style="font-weight:900;">Meet Sarah</h3>
+            <p class="text-sm mb-2" style="color:rgba(255,255,255,0.5);">Your 24/7 AI Growth Partner</p>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="text-xs px-2 py-0.5 rounded-full"
+                style="background:rgba(0,210,255,0.1); color:var(--electric); border:1px solid rgba(0,210,255,0.2);">24/7 Available</span>
+              <span class="text-xs px-2 py-0.5 rounded-full"
+                style="background:rgba(0,210,255,0.1); color:var(--electric); border:1px solid rgba(0,210,255,0.2);">Books Appointments</span>
+              <span class="text-xs px-2 py-0.5 rounded-full"
+                style="background:rgba(0,210,255,0.1); color:var(--electric); border:1px solid rgba(0,210,255,0.2);">Qualifies Leads</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Live Call Simulation -->
+        <div class="rounded-xl p-4 mb-5"
+          style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08);">
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-display font-700"
+                style="background:linear-gradient(135deg,var(--electric),var(--royal)); color:var(--navy); font-weight:700;">
+                JD</div>
+              <div>
+                <p class="text-white text-sm font-medium">John Davidson</p>
+                <p class="text-xs" style="color:rgba(255,255,255,0.4);">Inbound — Appointment Request</p>
+              </div>
+            </div>
+            <span class="text-xs" style="color:rgba(255,255,255,0.3);">00:02:34</span>
+          </div>
+          <div class="rounded-lg p-3 text-sm"
+            style="background:rgba(0,210,255,0.07); border:1px solid rgba(0,210,255,0.12); color:rgba(255,255,255,0.7); line-height:1.6;">
+            "Hi, I'd like to book a consultation for next Tuesday…"<br />
+            <span style="color:var(--electric);">Sarah:</span> "I have 10 AM and 2 PM available. Which works best for you?"
+          </div>
+          <div class="mt-3 flex items-center gap-2">
+            <div class="flex-1 h-1.5 rounded-full overflow-hidden" style="background:rgba(255,255,255,0.08);">
+              <div class="h-full rounded-full"
+                style="width:68%; background:linear-gradient(90deg,var(--electric),var(--royal));"></div>
+            </div>
+            <span class="text-xs" style="color:rgba(255,255,255,0.3);">Booking in progress</span>
+          </div>
+        </div>
+
+        <!-- THE MAIN CONVERSION CTA -->
+        <a href="tel:+12164129541"
+          class="btn-primary btn-pulse w-full text-center justify-center"
+          style="padding:18px 32px; font-size:1.05rem; display:flex; border-radius:12px;">
+          <i data-lucide="phone-call" class="w-5 h-5"></i>
+          Test Sarah Now — She's Live
+        </a>
+        <p class="text-center text-xs mt-3" style="color:rgba(255,255,255,0.3);">
+          Call Sarah live · She answers on the first ring
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════
+   STATS BAR
+════════════════════════════════════════════════════ -->
+<section style="background: var(--off-white); border-top: 1px solid rgba(10,17,40,0.06); border-bottom: 1px solid rgba(10,17,40,0.06);">
+  <div class="max-w-7xl mx-auto px-6 py-4">
+    <div class="grid grid-cols-2 md:grid-cols-4 divide-x divide-gray-200">
+      <div class="stat-card reveal">
+        <div class="stat-number">97%</div>
+        <p class="text-sm font-medium mt-1" style="color:var(--text-muted)">Task Automation Rate</p>
+      </div>
+      <div class="stat-card reveal reveal-delay-1">
+        <div class="stat-number">14×</div>
+        <p class="text-sm font-medium mt-1" style="color:var(--text-muted)">Faster Time-to-Insight</p>
+      </div>
+      <div class="stat-card reveal reveal-delay-2">
+        <div class="stat-number">$2.4M</div>
+        <p class="text-sm font-medium mt-1" style="color:var(--text-muted)">Avg. Annual Cost Savings</p>
+      </div>
+      <div class="stat-card reveal reveal-delay-3">
+        <div class="stat-number">300+</div>
+        <p class="text-sm font-medium mt-1" style="color:var(--text-muted)">Enterprise Deployments</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════
+   VARK BENTO GRID — PHASES
+════════════════════════════════════════════════════ -->
+<section id="solutions" class="py-24 md:py-32" style="background: var(--white);">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <div class="badge badge-navy mb-5 inline-flex">The FlyVark Method</div>
+      <h2 class="font-display font-900 mb-5 reveal"
+        style="font-size: clamp(2rem, 4.5vw, 3.25rem); font-weight: 900; color: var(--navy);">
+        Three Phases.<br /><span class="gradient-text">Infinite Leverage.</span>
+      </h2>
+      <p class="text-lg max-w-2xl mx-auto reveal reveal-delay-1" style="color:var(--text-muted);">
+        Every FlyVark engagement follows a battle-tested framework engineered to move from insight to impact — faster
+        than any traditional approach.
+      </p>
+    </div>
+
+    <!-- Bento Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-5">
+
+      <!-- Phase 1: Discover — Large Card -->
+      <div class="bento-card lg:col-span-2 reveal">
+        <div class="bento-shard"></div>
+        <div class="bento-icon">
+          <i data-lucide="search" class="w-6 h-6" style="color:var(--electric)"></i>
+        </div>
+        <div class="badge mb-4">Phase 01</div>
+        <h3 class="font-display font-800 text-2xl md:text-3xl mb-3" style="font-weight:800; color:var(--navy);">The Discovery Phase</h3>
+        <p class="text-base leading-relaxed mb-6" style="color:var(--text-muted);">
+          Before a single agent is built, our intelligence layer maps your organization's data flows, bottlenecks, and
+          untapped automation opportunities. We surface the exact workflows where AI generates the highest ROI — with
+          evidence, not guesswork.
+        </p>
+        <div class="grid grid-cols-2 gap-3">
+          <div class="flex items-center gap-2.5">
+            <div class="w-2 h-2 rounded-full flex-shrink-0" style="background:var(--electric)"></div>
+            <span class="text-sm font-medium" style="color:var(--navy)">Process Archaeology</span>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <div class="w-2 h-2 rounded-full flex-shrink-0" style="background:var(--royal)"></div>
+            <span class="text-sm font-medium" style="color:var(--navy)">ROI Opportunity Mapping</span>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <div class="w-2 h-2 rounded-full flex-shrink-0" style="background:var(--electric)"></div>
+            <span class="text-sm font-medium" style="color:var(--navy)">Data Landscape Audit</span>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <div class="w-2 h-2 rounded-full flex-shrink-0" style="background:var(--royal)"></div>
+            <span class="text-sm font-medium" style="color:var(--navy)">Stakeholder Intelligence</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 2: Build — Tall Card -->
+      <div class="bento-card reveal reveal-delay-1"
+        style="background: linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 100%); border-color: rgba(0,210,255,0.15);">
+        <div class="bento-shard" style="opacity:0.12; background: linear-gradient(135deg, #00d2ff, #fff);"></div>
+        <div class="bento-icon" style="background: rgba(0,210,255,0.1);">
+          <i data-lucide="cpu" class="w-6 h-6" style="color:var(--electric)"></i>
+        </div>
+        <div class="badge mb-4">Phase 02</div>
+        <h3 class="font-display font-800 text-2xl mb-3" style="font-weight:800; color:#fff;">The Build Phase</h3>
+        <p class="text-base leading-relaxed" style="color:rgba(255,255,255,0.6);">
+          Our engineering squads architect and deploy custom AI agents — trained on your domain, integrated into your
+          stack, and governed by your compliance requirements. No off-the-shelf templates. Pure precision.
+        </p>
+        <div class="mt-6 pt-6 border-t border-white/10">
+          <p class="text-sm font-display font-700 uppercase tracking-widest mb-3" style="color:rgba(255,255,255,0.35);">Stack Integrations</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs px-2.5 py-1 rounded-full font-medium"
+              style="background:rgba(0,210,255,0.1); color:var(--electric); border:1px solid rgba(0,210,255,0.2);">LangChain</span>
+            <span class="text-xs px-2.5 py-1 rounded-full font-medium"
+              style="background:rgba(0,210,255,0.1); color:var(--electric); border:1px solid rgba(0,210,255,0.2);">AutoGen</span>
+            <span class="text-xs px-2.5 py-1 rounded-full font-medium"
+              style="background:rgba(0,210,255,0.1); color:var(--electric); border:1px solid rgba(0,210,255,0.2);">Crew AI</span>
+            <span class="text-xs px-2.5 py-1 rounded-full font-medium"
+              style="background:rgba(0,210,255,0.1); color:var(--electric); border:1px solid rgba(0,210,255,0.2);">GPT-4o</span>
+            <span class="text-xs px-2.5 py-1 rounded-full font-medium"
+              style="background:rgba(0,210,255,0.1); color:var(--electric); border:1px solid rgba(0,210,255,0.2);">Claude</span>
+          </div>
         </div>
       </div>
     </div>
-  </section>
+
+    <!-- Bottom Row -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+
+      <!-- Phase 3: Scale -->
+      <div class="bento-card md:col-span-2 reveal">
+        <div class="bento-shard"></div>
+        <div class="bento-icon">
+          <i data-lucide="trending-up" class="w-6 h-6" style="color:var(--electric)"></i>
+        </div>
+        <div class="badge mb-4">Phase 03</div>
+        <h3 class="font-display font-800 text-2xl mb-3" style="font-weight:800; color:var(--navy);">The Scale Phase</h3>
+        <p class="text-base leading-relaxed mb-5" style="color:var(--text-muted);">
+          Once deployed, FlyVark agents learn continuously — improving through every interaction. Our MLOps
+          infrastructure ensures zero-downtime scaling from pilot to enterprise-wide rollout, with real-time
+          performance dashboards and SLA guarantees.
+        </p>
+        <div class="flex items-center gap-4">
+          <div class="flex-1 bg-gray-100 rounded-full h-2">
+            <div class="h-2 rounded-full"
+              style="width:87%; background: linear-gradient(90deg, var(--electric), var(--royal))"></div>
+          </div>
+          <span class="text-sm font-display font-700" style="color:var(--navy)">87% Avg. Efficiency Gain</span>
+        </div>
+      </div>
+
+      <!-- Wing Visual Card -->
+      <div class="bento-card text-center flex flex-col items-center justify-center reveal reveal-delay-2"
+        style="background: var(--off-white); min-height: 200px;">
+        <svg width="80" height="72" viewBox="0 0 36 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+          style="opacity:0.85">
+          <defs>
+            <linearGradient id="bg1" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#00d2ff" />
+              <stop offset="100%" stop-color="#3a7bd5" />
+            </linearGradient>
+            <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#3a7bd5" />
+              <stop offset="100%" stop-color="#00d2ff" />
+            </linearGradient>
+          </defs>
+          <polygon points="0,16 10,4 14,16 10,28" fill="url(#bg1)" opacity="0.9" />
+          <polygon points="6,10 16,2 18,14 10,16" fill="url(#bg1)" opacity="0.7" />
+          <polygon points="6,22 16,30 18,18 10,16" fill="url(#bg1)" opacity="0.5" />
+          <polygon points="36,16 26,4 22,16 26,28" fill="url(#bg2)" opacity="0.9" />
+          <polygon points="30,10 20,2 18,14 26,16" fill="url(#bg2)" opacity="0.7" />
+          <polygon points="30,22 20,30 18,18 26,16" fill="url(#bg2)" opacity="0.5" />
+          <ellipse cx="18" cy="16" rx="4" ry="7" fill="#0a1128" />
+          <ellipse cx="18" cy="16" rx="2" ry="4" fill="url(#bg1)" opacity="0.6" />
+        </svg>
+        <p class="font-display font-800 text-sm mt-4 tracking-widest uppercase"
+          style="color:var(--navy); font-weight:800; letter-spacing:0.15em;">Discover.<br />Build.<br />Scale.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 
-  <!-- ════════════════════════════════════════════════════
-     TESTIMONIALS
+<!-- ════════════════════════════════════════════════════
+   HOW IT WORKS — PROCESS
 ════════════════════════════════════════════════════ -->
-  <section id="testimonials" class="py-24" style="background:var(--off-white);">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-16">
-        <div class="badge badge-navy mb-5">Client Results</div>
+<section id="how-it-works" class="py-24" style="background:var(--navy); position:relative; overflow:hidden;">
+  <!-- Background grid -->
+  <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(0,210,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,210,255,0.03) 1px,transparent 1px);background-size:60px 60px;"></div>
+
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
+    <div class="text-center mb-16">
+      <div class="badge mb-5">How It Works</div>
+      <h2 class="font-display font-900 text-white mb-4 reveal"
+        style="font-size: clamp(2rem, 4.5vw, 3.25rem); font-weight:900;">
+        From Zero to <span class="gradient-text">Autonomous</span><br />in 90 Days.
+      </h2>
+      <p class="text-lg max-w-xl mx-auto reveal reveal-delay-1" style="color:rgba(255,255,255,0.55);">
+        A structured engagement model designed to deliver measurable value at every milestone.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+      <!-- Step 1 -->
+      <div class="process-step text-center reveal">
+        <div class="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-5 font-display font-800 text-sm"
+          style="background:linear-gradient(135deg, var(--electric), var(--royal)); color:#fff; font-weight:800;">01</div>
+        <h4 class="font-display font-700 text-white mb-2" style="font-weight:700;">Intake & Audit</h4>
+        <p class="text-sm leading-relaxed" style="color:rgba(255,255,255,0.5);">Deep-dive assessment of your workflows, data infrastructure, and automation readiness.</p>
+      </div>
+      <!-- Step 2 -->
+      <div class="process-step text-center reveal reveal-delay-1">
+        <div class="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-5 font-display font-800 text-sm"
+          style="background:linear-gradient(135deg, var(--electric), var(--royal)); color:#fff; font-weight:800;">02</div>
+        <h4 class="font-display font-700 text-white mb-2" style="font-weight:700;">Agent Design</h4>
+        <p class="text-sm leading-relaxed" style="color:rgba(255,255,255,0.5);">Co-create agent architecture, define task graphs, and align on success metrics and KPIs.</p>
+      </div>
+      <!-- Step 3 -->
+      <div class="process-step text-center reveal reveal-delay-2">
+        <div class="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-5 font-display font-800 text-sm"
+          style="background:linear-gradient(135deg, var(--electric), var(--royal)); color:#fff; font-weight:800;">03</div>
+        <h4 class="font-display font-700 text-white mb-2" style="font-weight:700;">Pilot Deployment</h4>
+        <p class="text-sm leading-relaxed" style="color:rgba(255,255,255,0.5);">Launch a contained, production-grade pilot. Measure, iterate, and validate ROI within 30 days.</p>
+      </div>
+      <!-- Step 4 -->
+      <div class="process-step text-center reveal reveal-delay-3">
+        <div class="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-5 font-display font-800 text-sm"
+          style="background:linear-gradient(135deg, var(--electric), var(--royal)); color:#fff; font-weight:800;">04</div>
+        <h4 class="font-display font-700 text-white mb-2" style="font-weight:700;">Enterprise Scale</h4>
+        <p class="text-sm leading-relaxed" style="color:rgba(255,255,255,0.5);">Roll out across business units with governance, monitoring, and continuous model improvement.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════
+   SERVICE CARDS
+════════════════════════════════════════════════════ -->
+<section id="services" class="py-24 md:py-32" style="background:var(--white);">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
+      <div>
+        <div class="badge badge-navy mb-5">Our Services</div>
         <h2 class="font-display font-900 reveal"
           style="font-size: clamp(2rem, 4.5vw, 3.25rem); font-weight:900; color:var(--navy);">
-          What Leaders Are <span class="gradient-text">Saying.</span>
+          Every Capability You Need<br /><span class="gradient-text">to Go Autonomous.</span>
         </h2>
       </div>
+      <p class="max-w-sm text-base reveal reveal-delay-1" style="color:var(--text-muted);">
+        Purpose-built AI services that integrate into your existing tech stack and deliver results without disrupting operations.
+      </p>
+    </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="testimonial-card reveal">
-          <p class="text-base leading-relaxed mb-6 relative z-10" style="color:rgba(255,255,255,0.75);">"FlyVark didn't
-            just automate our workflows — they redesigned how we think about operations. The ROI was visible within the
-            first month."</p>
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-full flex items-center justify-center font-display font-700"
-              style="background:linear-gradient(135deg,var(--electric),var(--royal)); color:#fff; font-size:0.85rem; font-weight:700;">
-              SK</div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Card 1 -->
+      <div class="service-card reveal">
+        <div class="service-icon"><i data-lucide="bot" class="w-5 h-5 text-white"></i></div>
+        <h3 class="font-display font-700 text-lg mb-2" style="font-weight:700; color:var(--navy);">Agentic Workflow Automation</h3>
+        <p class="text-sm leading-relaxed mb-5" style="color:var(--text-muted);">Deploy multi-step AI agents that handle end-to-end processes — from data ingestion to decision execution — without human intervention.</p>
+        <a href="#contact" class="text-sm font-display font-700 gradient-text flex items-center gap-1.5" style="font-weight:700;">
+          Learn More <i data-lucide="arrow-right" class="w-3.5 h-3.5" style="stroke:var(--royal)"></i>
+        </a>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-icon"><i data-lucide="brain-circuit" class="w-5 h-5 text-white"></i></div>
+        <h3 class="font-display font-700 text-lg mb-2" style="font-weight:700; color:var(--navy);">Enterprise LLM Integration</h3>
+        <p class="text-sm leading-relaxed mb-5" style="color:var(--text-muted);">Securely embed frontier language models into your enterprise applications with custom RAG pipelines, fine-tuning, and compliance guardrails.</p>
+        <a href="#contact" class="text-sm font-display font-700 gradient-text flex items-center gap-1.5" style="font-weight:700;">
+          Learn More <i data-lucide="arrow-right" class="w-3.5 h-3.5" style="stroke:var(--royal)"></i>
+        </a>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-icon"><i data-lucide="line-chart" class="w-5 h-5 text-white"></i></div>
+        <h3 class="font-display font-700 text-lg mb-2" style="font-weight:700; color:var(--navy);">Predictive Intelligence Layer</h3>
+        <p class="text-sm leading-relaxed mb-5" style="color:var(--text-muted);">Move beyond dashboards. FlyVark's predictive models surface forward-looking signals, enabling proactive decisions before problems arise.</p>
+        <a href="#contact" class="text-sm font-display font-700 gradient-text flex items-center gap-1.5" style="font-weight:700;">
+          Learn More <i data-lucide="arrow-right" class="w-3.5 h-3.5" style="stroke:var(--royal)"></i>
+        </a>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="service-card reveal">
+        <div class="service-icon"><i data-lucide="shield-check" class="w-5 h-5 text-white"></i></div>
+        <h3 class="font-display font-700 text-lg mb-2" style="font-weight:700; color:var(--navy);">AI Governance & Compliance</h3>
+        <p class="text-sm leading-relaxed mb-5" style="color:var(--text-muted);">Implement robust AI oversight frameworks aligned with ISO 42001, EU AI Act, and SOC 2 — ensuring your deployments remain auditable and ethical.</p>
+        <a href="#contact" class="text-sm font-display font-700 gradient-text flex items-center gap-1.5" style="font-weight:700;">
+          Learn More <i data-lucide="arrow-right" class="w-3.5 h-3.5" style="stroke:var(--royal)"></i>
+        </a>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-icon"><i data-lucide="git-branch" class="w-5 h-5 text-white"></i></div>
+        <h3 class="font-display font-700 text-lg mb-2" style="font-weight:700; color:var(--navy);">Multi-Agent Orchestration</h3>
+        <p class="text-sm leading-relaxed mb-5" style="color:var(--text-muted);">Coordinate fleets of specialized agents working in parallel — each focused on a discrete task, collectively delivering outcomes at enterprise velocity.</p>
+        <a href="#contact" class="text-sm font-display font-700 gradient-text flex items-center gap-1.5" style="font-weight:700;">
+          Learn More <i data-lucide="arrow-right" class="w-3.5 h-3.5" style="stroke:var(--royal)"></i>
+        </a>
+      </div>
+
+      <!-- Card 6 — CTA -->
+      <div class="service-card reveal reveal-delay-2 flex flex-col justify-between"
+        style="background: linear-gradient(160deg, var(--navy) 0%, #0d1f4a 100%); border-color: rgba(0,210,255,0.2);">
+        <div>
+          <div class="service-icon" style="background: rgba(0,210,255,0.1);">
+            <i data-lucide="rocket" class="w-5 h-5" style="color:var(--electric)"></i>
+          </div>
+          <h3 class="font-display font-700 text-lg mb-2" style="font-weight:700; color:#fff;">Ready to Fly?</h3>
+          <p class="text-sm leading-relaxed mb-6" style="color:rgba(255,255,255,0.55);">Book a free 45-minute AI Strategy Session. We'll map your highest-value automation opportunities — no pitch, just value.</p>
+        </div>
+        <a href="#contact" class="btn-primary text-sm w-full text-center justify-center">
+          Book Strategy Call
+          <i data-lucide="calendar" class="w-4 h-4"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════
+   MEET SARAH — AI RECEPTIONIST  ← id="demo" for deep-linking
+════════════════════════════════════════════════════ -->
+<section id="meet-sarah" class="py-24 md:py-32">
+  <!-- id="demo" anchor placed here for deep-linking -->
+  <span id="demo" style="position:absolute; margin-top:-80px;"></span>
+
+  <!-- Decorative shards -->
+  <div style="position:absolute;top:80px;right:-60px;width:280px;height:280px;opacity:0.05;background:linear-gradient(135deg,#00d2ff,#3a7bd5);clip-path:polygon(30% 0%,100% 20%,100% 80%,70% 100%,0% 80%,0% 20%);pointer-events:none;"></div>
+  <div style="position:absolute;bottom:60px;left:-40px;width:180px;height:180px;opacity:0.04;background:linear-gradient(135deg,#3a7bd5,#00d2ff);clip-path:polygon(50% 0%,100% 50%,50% 100%,0% 50%);pointer-events:none;"></div>
+
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
+
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <div class="badge mb-5 inline-flex">
+        <span class="glow-dot"></span>
+        AI Receptionist — Live Now
+      </div>
+      <h2 class="font-display font-900 text-white mb-5 reveal"
+        style="font-size: clamp(2rem, 4.5vw, 3.25rem); font-weight: 900;">
+        Meet Sarah: Your <span class="gradient-text">24/7 AI</span><br />Growth Partner
+      </h2>
+      <p class="text-lg max-w-2xl mx-auto reveal reveal-delay-1" style="color:rgba(255,255,255,0.55);">
+        Stop losing leads to voicemail. Sarah answers on the first ring, manages complex bookings, and resolves client
+        issues with human-like intelligence.
+      </p>
+    </div>
+
+    <!-- Main Content Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+      <!-- Left — Avatar & Visual -->
+      <div class="flex flex-col items-center gap-8 reveal">
+        <!-- Avatar Ring -->
+        <div class="sarah-avatar-ring">
+          <div class="sarah-avatar-inner">
+            <img src="Sarah.png" alt="Sarah — FlyVark AI Receptionist" class="sarah-photo" />
+          </div>
+        </div>
+
+        <!-- Live Call Card -->
+        <div class="w-full max-w-sm rounded-2xl p-5"
+          style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1);">
+          <div class="flex items-center justify-between mb-4">
+            <span class="sarah-live-badge">
+              <span class="glow-dot" style="width:6px;height:6px;"></span>
+              Live — Answering Now
+            </span>
+            <span class="text-xs" style="color:rgba(255,255,255,0.3);">00:02:34</span>
+          </div>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-9 h-9 rounded-full flex items-center justify-center text-xs font-display font-700"
+              style="background:linear-gradient(135deg,var(--electric),var(--royal)); color:var(--navy); font-weight:700;">
+              JD</div>
             <div>
-              <p class="font-display font-700 text-white text-sm" style="font-weight:700;">Sarah Kim</p>
-              <p class="text-xs" style="color:rgba(255,255,255,0.4);">CTO, Nexalabs</p>
+              <p class="text-white text-sm font-medium">John Davidson</p>
+              <p class="text-xs" style="color:rgba(255,255,255,0.4);">Inbound — Appointment Request</p>
             </div>
-            <div class="ml-auto flex gap-0.5">
-              <i data-lucide="star" class="w-3.5 h-3.5" style="fill:var(--electric); stroke:var(--electric)"></i>
-              <i data-lucide="star" class="w-3.5 h-3.5" style="fill:var(--electric); stroke:var(--electric)"></i>
-              <i data-lucide="star" class="w-3.5 h-3.5" style="fill:var(--electric); stroke:var(--electric)"></i>
-              <i data-lucide="star" class="w-3.5 h-3.5" style="fill:var(--electric); stroke:var(--electric)"></i>
-              <i data-lucide="star" class="w-3.5 h-3.5" style="fill:var(--electric); stroke:var(--electric)"></i>
+          </div>
+          <div class="rounded-xl p-3 text-sm"
+            style="background:rgba(0,210,255,0.07); border:1px solid rgba(0,210,255,0.15); color:rgba(255,255,255,0.7); line-height:1.6;">
+            "Hi, I'd like to book a consultation for next Tuesday…"<br />
+            <span style="color:var(--electric);">Sarah:</span> "I have 10 AM and 2 PM available. Which works best for you?"
+          </div>
+          <div class="mt-3 flex gap-2">
+            <div class="flex-1 h-1.5 rounded-full overflow-hidden" style="background:rgba(255,255,255,0.08);">
+              <div class="h-full rounded-full"
+                style="width:68%; background:linear-gradient(90deg,var(--electric),var(--royal));"></div>
+            </div>
+            <span class="text-xs" style="color:rgba(255,255,255,0.3);">Booking in progress</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right — Features & CTA -->
+      <div class="reveal reveal-delay-1">
+        <p class="text-base leading-relaxed mb-8" style="color:rgba(255,255,255,0.6);">
+          She doesn't just take messages — she <span style="color:var(--electric); font-weight:600;">builds your
+            business while you sleep.</span> Trained on your specific data, integrated with your calendar, and
+          available every hour of every day.
+        </p>
+
+        <!-- Feature Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-10">
+          <div class="sarah-feature-item">
+            <div class="sarah-feature-icon">
+              <i data-lucide="clock" class="w-4 h-4" style="color:var(--electric)"></i>
+            </div>
+            <div>
+              <p class="font-display font-700 text-white text-sm mb-0.5" style="font-weight:700;">24/7 Availability</p>
+              <p class="text-xs" style="color:rgba(255,255,255,0.45);">Never misses a call, even at 3 AM</p>
+            </div>
+          </div>
+          <div class="sarah-feature-item">
+            <div class="sarah-feature-icon">
+              <i data-lucide="calendar-check" class="w-4 h-4" style="color:var(--electric)"></i>
+            </div>
+            <div>
+              <p class="font-display font-700 text-white text-sm mb-0.5" style="font-weight:700;">Instant Appointment Setting</p>
+              <p class="text-xs" style="color:rgba(255,255,255,0.45);">Books directly into your calendar</p>
+            </div>
+          </div>
+          <div class="sarah-feature-item">
+            <div class="sarah-feature-icon">
+              <i data-lucide="filter" class="w-4 h-4" style="color:var(--electric)"></i>
+            </div>
+            <div>
+              <p class="font-display font-700 text-white text-sm mb-0.5" style="font-weight:700;">Intelligent Lead Qualification</p>
+              <p class="text-xs" style="color:rgba(255,255,255,0.45);">Scores and routes every lead</p>
+            </div>
+          </div>
+          <div class="sarah-feature-item">
+            <div class="sarah-feature-icon">
+              <i data-lucide="phone-forwarded" class="w-4 h-4" style="color:var(--electric)"></i>
+            </div>
+            <div>
+              <p class="font-display font-700 text-white text-sm mb-0.5" style="font-weight:700;">Seamless Call Forwarding</p>
+              <p class="text-xs" style="color:rgba(255,255,255,0.45);">Escalates to humans when needed</p>
             </div>
           </div>
         </div>
 
-        <div class="testimonial-card reveal reveal-delay-1">
-          <p class="text-base leading-relaxed mb-6 relative z-10" style="color:rgba(255,255,255,0.75);">"The multi-agent
-            system FlyVark deployed reduced our data processing time by 91%. It's the competitive moat we've been
-            looking for."</p>
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-full flex items-center justify-center font-display font-700"
-              style="background:linear-gradient(135deg,var(--electric),var(--royal)); color:#fff; font-size:0.85rem; font-weight:700;">
-              MR</div>
-            <div>
-              <p class="font-display font-700 text-white text-sm" style="font-weight:700;">Marcus Reid</p>
-              <p class="text-xs" style="color:rgba(255,255,255,0.4);">VP Operations, CoreBridge</p>
-            </div>
-            <div class="ml-auto flex gap-0.5">
-              <i data-lucide="star" class="w-3.5 h-3.5" style="fill:var(--electric); stroke:var(--electric)"></i>
-              <i data-lucide="star" class="w-3.5 h-3.5" style="fill:var(--electric); stroke:var(--electric)"></i>
-              <i data-lucide="star" class="w-3.5 h-3.5" style="fill:var(--electric); stroke:var(--electric)"></i>
-              <i data-lucide="star" class="w-3.5 h-3.5" style="fill:var(--electric); stroke:var(--electric)"></i>
-              <i data-lucide="star" class="w-3.5 h-3.5" style="fill:var(--electric); stroke:var(--electric)"></i>
-            </div>
+        <!-- CTA -->
+        <a href="tel:+12164129541" class="btn-primary btn-pulse text-base inline-flex"
+          style="padding:18px 40px; font-size:1.05rem;">
+          <i data-lucide="phone-call" class="w-5 h-5"></i>
+          Test Sarah Now
+        </a>
+        <p class="mt-4 text-xs" style="color:rgba(255,255,255,0.3);">Call Sarah live — she's ready to answer right now.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════
+   PRICING
+════════════════════════════════════════════════════ -->
+<section id="pricing" class="py-24 md:py-32">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <div class="badge badge-navy mb-5 inline-flex">Transparent Pricing</div>
+      <h2 class="font-display font-900 mb-5 reveal"
+        style="font-size: clamp(2rem, 4.5vw, 3.25rem); font-weight: 900; color: var(--navy);">
+        Simple Plans.<br /><span class="gradient-text">Serious Results.</span>
+      </h2>
+      <p class="text-lg max-w-xl mx-auto reveal reveal-delay-1" style="color:var(--text-muted);">
+        Choose the plan that fits your growth stage. Both include Sarah, your 24/7 AI receptionist, fully trained on your business.
+      </p>
+    </div>
+
+    <!-- Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+
+      <!-- Card 1: Growth Plan -->
+      <div class="pricing-card reveal">
+        <div class="mb-6">
+          <div class="badge badge-navy mb-4 inline-flex">Subscription</div>
+          <h3 class="font-display font-900 text-2xl mb-2" style="font-weight:900; color:var(--navy);">The Growth Plan</h3>
+          <p class="text-sm" style="color:var(--text-muted);">Perfect for businesses ready to start automating and scale at their own pace.</p>
+        </div>
+
+        <!-- Pricing -->
+        <div class="mb-8 pb-8" style="border-bottom: 1.5px solid rgba(10,17,40,0.08);">
+          <div class="flex items-baseline gap-2 mb-1">
+            <span class="font-display font-900" style="font-size:2.8rem; font-weight:900; color:var(--navy);">$449</span>
+            <span class="text-sm font-medium" style="color:var(--text-muted);">one-time setup</span>
+          </div>
+          <div class="flex items-baseline gap-2">
+            <span class="font-display font-700 text-xl" style="font-weight:700; color:var(--royal);">+ $100<span class="text-sm">/month</span></span>
+            <span class="text-xs" style="color:var(--text-muted);">ongoing maintenance</span>
           </div>
         </div>
 
-        <div class="testimonial-card reveal reveal-delay-2">
-          <p class="text-base leading-relaxed mb-6 relative z-10" style="color:rgba(255,255,255,0.75);">"Deploying
-            FlyVark agents across our sales pipeline doubled qualified leads in Q2. The system learns faster than any
-            human team could."</p>
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-full flex items-center justify-center font-display font-700"
-              style="background:linear-gradient(135deg,var(--electric),var(--royal)); color:#fff; font-size:0.85rem; font-weight:700;">
-              AL</div>
-            <div>
-              <p class="font-display font-700 text-white text-sm" style="font-weight:700;">Aisha Larson</p>
-              <p class="text-xs" style="color:rgba(255,255,255,0.4);">Chief Revenue Officer, Axiomtech</p>
-            </div>
-            <div class="ml-auto flex gap-0.5">
-              <i data-lucide="star" class="w-3.5 h-3.5" style="fill:var(--electric); stroke:var(--electric)"></i>
-              <i data-lucide="star" class="w-3.5 h-3.5" style="fill:var(--electric); stroke:var(--electric)"></i>
-              <i data-lucide="star" class="w-3.5 h-3.5" style="fill:var(--electric); stroke:var(--electric)"></i>
-              <i data-lucide="star" class="w-3.5 h-3.5" style="fill:var(--electric); stroke:var(--electric)"></i>
-              <i data-lucide="star" class="w-3.5 h-3.5" style="fill:var(--electric); stroke:var(--electric)"></i>
-            </div>
+        <!-- Features -->
+        <ul class="space-y-1 mb-10 flex-1">
+          <li class="pricing-feature-item">
+            <div class="pricing-check"><i data-lucide="check" class="w-3 h-3 text-white"></i></div>
+            <span class="text-sm" style="color:var(--navy);">Custom AI Agent Training</span>
+          </li>
+          <li class="pricing-feature-item">
+            <div class="pricing-check"><i data-lucide="check" class="w-3 h-3 text-white"></i></div>
+            <span class="text-sm" style="color:var(--navy);">24/7 Call Answering & Booking</span>
+          </li>
+          <li class="pricing-feature-item">
+            <div class="pricing-check"><i data-lucide="check" class="w-3 h-3 text-white"></i></div>
+            <span class="text-sm" style="color:var(--navy);">Google Calendar & Calendly Integration</span>
+          </li>
+          <li class="pricing-feature-item">
+            <div class="pricing-check"><i data-lucide="check" class="w-3 h-3 text-white"></i></div>
+            <span class="text-sm" style="color:var(--navy);">CRM Integration</span>
+          </li>
+          <li class="pricing-feature-item">
+            <div class="pricing-check"><i data-lucide="check" class="w-3 h-3 text-white"></i></div>
+            <span class="text-sm" style="color:var(--navy);">Monthly Performance Reports</span>
+          </li>
+          <li class="pricing-feature-item">
+            <div class="pricing-check"><i data-lucide="check" class="w-3 h-3 text-white"></i></div>
+            <span class="text-sm" style="color:var(--navy);">24/7 Technical Support</span>
+          </li>
+        </ul>
+
+        <a href="#contact" class="btn-secondary w-full text-center justify-center" style="display:flex;">
+          Get Started
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </a>
+      </div>
+
+      <!-- Card 2: Enterprise Plan (Featured) -->
+      <div class="pricing-card featured reveal reveal-delay-1">
+        <div class="popular-badge">⭐ Most Popular</div>
+
+        <div class="mb-6">
+          <div class="badge mb-4 inline-flex">Full Ownership</div>
+          <h3 class="font-display font-900 text-2xl mb-2 text-white" style="font-weight:900;">The Enterprise Plan</h3>
+          <p class="text-sm" style="color:rgba(255,255,255,0.5);">One payment. Complete ownership of your AI agent — no ongoing fees, ever.</p>
+        </div>
+
+        <!-- Pricing -->
+        <div class="mb-8 pb-8" style="border-bottom: 1.5px solid rgba(255,255,255,0.1);">
+          <div class="flex items-baseline gap-2 mb-1">
+            <span class="font-display font-900 gradient-text" style="font-size:2.8rem; font-weight:900;">$1,449</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-sm font-medium" style="color:rgba(255,255,255,0.5);">One-time payment · Own it forever</span>
+          </div>
+        </div>
+
+        <!-- Features -->
+        <ul class="space-y-1 mb-10 flex-1">
+          <li class="pricing-feature-item">
+            <div class="pricing-check"><i data-lucide="check" class="w-3 h-3 text-white"></i></div>
+            <span class="text-sm text-white">Everything in Growth Plan</span>
+          </li>
+          <li class="pricing-feature-item">
+            <div class="pricing-check"><i data-lucide="check" class="w-3 h-3 text-white"></i></div>
+            <span class="text-sm text-white">Full Agent Source Ownership</span>
+          </li>
+          <li class="pricing-feature-item">
+            <div class="pricing-check"><i data-lucide="check" class="w-3 h-3 text-white"></i></div>
+            <span class="text-sm text-white">Advanced Custom Training & Fine-Tuning</span>
+          </li>
+          <li class="pricing-feature-item">
+            <div class="pricing-check"><i data-lucide="check" class="w-3 h-3 text-white"></i></div>
+            <span class="text-sm text-white">Priority 24/7 Support — 1hr SLA</span>
+          </li>
+          <li class="pricing-feature-item">
+            <div class="pricing-check"><i data-lucide="check" class="w-3 h-3 text-white"></i></div>
+            <span class="text-sm text-white">Multi-Department Call Routing</span>
+          </li>
+          <li class="pricing-feature-item">
+            <div class="pricing-check"><i data-lucide="check" class="w-3 h-3 text-white"></i></div>
+            <span class="text-sm text-white">Dedicated Account Manager</span>
+          </li>
+        </ul>
+
+        <a href="#contact" class="btn-primary w-full text-center justify-center" style="display:flex;">
+          Claim Full Ownership
+          <i data-lucide="zap" class="w-4 h-4"></i>
+        </a>
+        <p class="text-center text-xs mt-4" style="color:rgba(255,255,255,0.3);">Ready in 2–3 business days.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════
+   TESTIMONIALS
+════════════════════════════════════════════════════ -->
+<section id="testimonials" class="py-24" style="background:var(--off-white);">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16">
+      <div class="badge badge-navy mb-5">Client Results</div>
+      <h2 class="font-display font-900 reveal"
+        style="font-size: clamp(2rem, 4.5vw, 3.25rem); font-weight:900; color:var(--navy);">
+        What Leaders Are <span class="gradient-text">Saying.</span>
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="testimonial-card reveal">
+        <p class="text-base leading-relaxed mb-6 relative z-10" style="color:rgba(255,255,255,0.75);">"FlyVark didn't
+          just automate our workflows — they redesigned how we think about operations. The ROI was visible within the
+          first month."</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full flex items-center justify-center font-display font-700"
+            style="background:linear-gradient(135deg,var(--electric),var(--royal)); color:#fff; font-size:0.85rem; font-weight:700;">
+            SK</div>
+          <div>
+            <p class="font-display font-700 text-white text-sm" style="font-weight:700;">Sarah Kim</p>
+            <p class="text-xs" style="color:rgba(255,255,255,0.4);">CTO, Nexalabs</p>
+          </div>
+          <div class="ml-auto flex gap-0.5">
+            <i data-lucide="star" class="w-3.5 h-3.5" style="fill:var(--electric); stroke:var(--electric)"></i>
+            <i data-lucide="star" class="w-3.5 h-3.5" style="fill:var(--electric); stroke:var(--electric)"></i>
+            <i data-lucide="star" class="w-3.5 h-3.5" style="fill:var(--electric); stroke:var(--electric)"></i>
+            <i data-lucide="star" class="w-3.5 h-3.5" style="fill:var(--electric); stroke:var(--electric)"></i>
+            <i data-lucide="star" class="w-3.5 h-3.5" style="fill:var(--electric); stroke:var(--electric)"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal reveal-delay-1">
+        <p class="text-base leading-relaxed mb-6 relative z-10" style="color:rgba(255,255,255,0.75);">"The multi-agent
+          system FlyVark deployed reduced our data processing time by 91%. It's the competitive moat we've been
+          looking for."</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full flex items-center justify-center font-display font-700"
+            style="background:linear-gradient(135deg,var(--electric),var(--royal)); color:#fff; font-size:0.85rem; font-weight:700;">
+            MR</div>
+          <div>
+            <p class="font-display font-700 text-white text-sm" style="font-weight:700;">Marcus Reid</p>
+            <p class="text-xs" style="color:rgba(255,255,255,0.4);">VP Operations, CoreBridge</p>
+          </div>
+          <div class="ml-auto flex gap-0.5">
+            <i data-lucide="star" class="w-3.5 h-3.5" style="fill:var(--electric); stroke:var(--electric)"></i>
+            <i data-lucide="star" class="w-3.5 h-3.5" style="fill:var(--electric); stroke:var(--electric)"></i>
+            <i data-lucide="star" class="w-3.5 h-3.5" style="fill:var(--electric); stroke:var(--electric)"></i>
+            <i data-lucide="star" class="w-3.5 h-3.5" style="fill:var(--electric); stroke:var(--electric)"></i>
+            <i data-lucide="star" class="w-3.5 h-3.5" style="fill:var(--electric); stroke:var(--electric)"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal reveal-delay-2">
+        <p class="text-base leading-relaxed mb-6 relative z-10" style="color:rgba(255,255,255,0.75);">"Deploying
+          FlyVark agents across our sales pipeline doubled qualified leads in Q2. The system learns faster than any
+          human team could."</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full flex items-center justify-center font-display font-700"
+            style="background:linear-gradient(135deg,var(--electric),var(--royal)); color:#fff; font-size:0.85rem; font-weight:700;">
+            AL</div>
+          <div>
+            <p class="font-display font-700 text-white text-sm" style="font-weight:700;">Aisha Larson</p>
+            <p class="text-xs" style="color:rgba(255,255,255,0.4);">Chief Revenue Officer, Axiomtech</p>
+          </div>
+          <div class="ml-auto flex gap-0.5">
+            <i data-lucide="star" class="w-3.5 h-3.5" style="fill:var(--electric); stroke:var(--electric)"></i>
+            <i data-lucide="star" class="w-3.5 h-3.5" style="fill:var(--electric); stroke:var(--electric)"></i>
+            <i data-lucide="star" class="w-3.5 h-3.5" style="fill:var(--electric); stroke:var(--electric)"></i>
+            <i data-lucide="star" class="w-3.5 h-3.5" style="fill:var(--electric); stroke:var(--electric)"></i>
+            <i data-lucide="star" class="w-3.5 h-3.5" style="fill:var(--electric); stroke:var(--electric)"></i>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
 
-  <!-- ════════════════════════════════════════════════════
-     CTA BANNER
+<!-- ════════════════════════════════════════════════════
+   FAQ — ACCORDION
 ════════════════════════════════════════════════════ -->
-  <section id="contact" class="py-24" style="background:var(--white);">
+<section id="faq" class="py-24 md:py-32">
+  <div class="max-w-3xl mx-auto px-6">
+
+    <!-- Section Header -->
+    <div class="text-center mb-14">
+      <div class="badge badge-navy mb-5 inline-flex">Got Questions?</div>
+      <h2 class="font-display font-900 mb-4 reveal"
+        style="font-size: clamp(1.9rem, 4vw, 3rem); font-weight: 900; color: var(--navy);">
+        Everything You Need<br /><span class="gradient-text">to Know.</span>
+      </h2>
+      <p class="text-base reveal reveal-delay-1" style="color:var(--text-muted);">
+        Straight answers about how Sarah and FlyVark AI work for your business.
+      </p>
+    </div>
+
+    <!-- Accordion -->
+    <div class="space-y-3 reveal reveal-delay-2" id="faq-accordion">
+
+      <div class="faq-item open">
+        <button class="faq-trigger" aria-expanded="true">
+          <span>How does the AI receptionist handle complex customer inquiries?</span>
+          <div class="faq-icon">
+            <i data-lucide="plus" class="w-4 h-4" style="color:var(--electric)"></i>
+          </div>
+        </button>
+        <div class="faq-body">
+          <div class="faq-body-inner">
+            Our AI agents, like Sarah, are trained on your specific business data. They don't just follow a script —
+            they understand intent. If a customer has a complex issue, Sarah can resolve it based on your guidelines
+            or seamlessly forward the call to a human team member.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-trigger" aria-expanded="false">
+          <span>Can Sarah actually book appointments directly into my calendar?</span>
+          <div class="faq-icon">
+            <i data-lucide="plus" class="w-4 h-4" style="color:var(--electric)"></i>
+          </div>
+        </button>
+        <div class="faq-body">
+          <div class="faq-body-inner">
+            Yes! Sarah integrates with popular tools like Calendly, Google Calendar, and various CRM systems. She
+            checks your real-time availability, takes the client's details, and drops the appointment straight into
+            your schedule — no manual entry required.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-trigger" aria-expanded="false">
+          <span>What happens if a caller asks for a specific person or department?</span>
+          <div class="faq-icon">
+            <i data-lucide="plus" class="w-4 h-4" style="color:var(--electric)"></i>
+          </div>
+        </button>
+        <div class="faq-body">
+          <div class="faq-body-inner">
+            We set up custom "Call Forwarding" logic. Sarah can act as a digital operator, qualifying the lead first
+            and then transferring the call to the correct department or your personal mobile if the matter is urgent.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-trigger" aria-expanded="false">
+          <span>Is the AI available 24/7, including holidays and weekends?</span>
+          <div class="faq-icon">
+            <i data-lucide="plus" class="w-4 h-4" style="color:var(--electric)"></i>
+          </div>
+        </button>
+        <div class="faq-body">
+          <div class="faq-body-inner">
+            Absolutely. FlyVark AI agents never sleep, take breaks, or go on vacation. Your business will be "always
+            open," ensuring you never miss a lead or a booking — even at 3 AM.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-trigger" aria-expanded="false">
+          <span>How long does the "Setup" process take?</span>
+          <div class="faq-icon">
+            <i data-lucide="plus" class="w-4 h-4" style="color:var(--electric)"></i>
+          </div>
+        </button>
+        <div class="faq-body">
+          <div class="faq-body-inner">
+            For both our $449 Growth Plan and $1,449 Enterprise Plan, we typically have your custom AI agent built, trained on your business info,
+            and ready to take calls within 2–3 business days. The Enterprise plan follows the same timeline, with a
+            dedicated setup specialist assigned to your account.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════
+   CTA BANNER
+════════════════════════════════════════════════════ -->
+<section id="contact" class="py-24" style="background:var(--white);">
     <div class="max-w-4xl mx-auto px-6">
       <div class="gradient-border reveal">
         <div class="gradient-border-inner p-12 md:p-16 text-center">
@@ -1171,78 +1929,76 @@
     </div>
   </section>
 
-
-  <!-- ════════════════════════════════════════════════════
-     FOOTER
+<!-- ════════════════════════════════════════════════════
+   FOOTER
 ════════════════════════════════════════════════════ -->
-  <footer id="footer">
-    <!-- Mantra Banner -->
-    <div class="py-6 border-b" style="border-color:rgba(255,255,255,0.06);">
-      <div class="max-w-7xl mx-auto px-6 overflow-hidden">
-        <div class="flex gap-16 items-center" id="marquee" style="white-space:nowrap;">
-          <span class="font-display font-900 uppercase tracking-widest"
-            style="font-size:clamp(1.1rem,2.5vw,1.6rem); font-weight:900; color:rgba(255,255,255,0.08); flex-shrink:0;">Discover.&nbsp;&nbsp;Build.&nbsp;&nbsp;Scale.&nbsp;&nbsp;·&nbsp;&nbsp;Discover.&nbsp;&nbsp;Build.&nbsp;&nbsp;Scale.&nbsp;&nbsp;·&nbsp;&nbsp;Discover.&nbsp;&nbsp;Build.&nbsp;&nbsp;Scale.&nbsp;&nbsp;·&nbsp;&nbsp;Discover.&nbsp;&nbsp;Build.&nbsp;&nbsp;Scale.&nbsp;&nbsp;·&nbsp;&nbsp;Discover.&nbsp;&nbsp;Build.&nbsp;&nbsp;Scale.&nbsp;&nbsp;·</span>
-        </div>
+<footer id="footer">
+  <!-- Mantra Banner -->
+  <div class="py-6 border-b" style="border-color:rgba(255,255,255,0.06);">
+    <div class="max-w-7xl mx-auto px-6 overflow-hidden">
+      <div class="flex gap-16 items-center" id="marquee" style="white-space:nowrap;">
+        <span class="font-display font-900 uppercase tracking-widest"
+          style="font-size:clamp(1.1rem,2.5vw,1.6rem); font-weight:900; color:rgba(255,255,255,0.08); flex-shrink:0;">Discover.&nbsp;&nbsp;Build.&nbsp;&nbsp;Scale.&nbsp;&nbsp;·&nbsp;&nbsp;Discover.&nbsp;&nbsp;Build.&nbsp;&nbsp;Scale.&nbsp;&nbsp;·&nbsp;&nbsp;Discover.&nbsp;&nbsp;Build.&nbsp;&nbsp;Scale.&nbsp;&nbsp;·&nbsp;&nbsp;Discover.&nbsp;&nbsp;Build.&nbsp;&nbsp;Scale.&nbsp;&nbsp;·&nbsp;&nbsp;Discover.&nbsp;&nbsp;Build.&nbsp;&nbsp;Scale.&nbsp;&nbsp;·</span>
       </div>
     </div>
+  </div>
 
-    <div class="max-w-7xl mx-auto px-6 py-16">
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-14">
+  <div class="max-w-7xl mx-auto px-6 py-16">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-14">
 
-        <!-- Brand Column -->
-        <div class="md:col-span-1">
-          <div class="logo-mark mb-5">
-            <svg width="30" height="26" viewBox="0 0 36 32" fill="none">
-              <defs>
-                <linearGradient id="fl1" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#00d2ff" />
-                  <stop offset="100%" stop-color="#3a7bd5" />
-                </linearGradient>
-                <linearGradient id="fl2" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#3a7bd5" />
-                  <stop offset="100%" stop-color="#00d2ff" />
-                </linearGradient>
-              </defs>
-              <polygon points="0,16 10,4 14,16 10,28" fill="url(#fl1)" opacity="0.9" />
-              <polygon points="6,10 16,2 18,14 10,16" fill="url(#fl1)" opacity="0.7" />
-              <polygon points="6,22 16,30 18,18 10,16" fill="url(#fl1)" opacity="0.5" />
-              <polygon points="36,16 26,4 22,16 26,28" fill="url(#fl2)" opacity="0.9" />
-              <polygon points="30,10 20,2 18,14 26,16" fill="url(#fl2)" opacity="0.7" />
-              <polygon points="30,22 20,30 18,18 26,16" fill="url(#fl2)" opacity="0.5" />
-              <ellipse cx="18" cy="16" rx="4" ry="7" fill="#0a1128" />
-              <ellipse cx="18" cy="16" rx="2" ry="4" fill="url(#fl1)" opacity="0.6" />
-            </svg>
-            <span class="font-display font-800 text-lg text-white" style="font-weight:800;">FlyVark<span
-                class="gradient-text"> AI</span></span>
-          </div>
-          <p class="text-sm leading-relaxed mb-6" style="color:rgba(255,255,255,0.45);">Autonomous AI agents that
-            transform how modern enterprises discover, build, and scale.</p>
+      <!-- Brand Column -->
+      <div class="md:col-span-1">
+        <div class="logo-mark mb-5">
+          <svg width="30" height="26" viewBox="0 0 36 32" fill="none">
+            <defs>
+              <linearGradient id="fl1" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#00d2ff" />
+                <stop offset="100%" stop-color="#3a7bd5" />
+              </linearGradient>
+              <linearGradient id="fl2" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#3a7bd5" />
+                <stop offset="100%" stop-color="#00d2ff" />
+              </linearGradient>
+            </defs>
+            <polygon points="0,16 10,4 14,16 10,28" fill="url(#fl1)" opacity="0.9" />
+            <polygon points="6,10 16,2 18,14 10,16" fill="url(#fl1)" opacity="0.7" />
+            <polygon points="6,22 16,30 18,18 10,16" fill="url(#fl1)" opacity="0.5" />
+            <polygon points="36,16 26,4 22,16 26,28" fill="url(#fl2)" opacity="0.9" />
+            <polygon points="30,10 20,2 18,14 26,16" fill="url(#fl2)" opacity="0.7" />
+            <polygon points="30,22 20,30 18,18 26,16" fill="url(#fl2)" opacity="0.5" />
+            <ellipse cx="18" cy="16" rx="4" ry="7" fill="#0a1128" />
+            <ellipse cx="18" cy="16" rx="2" ry="4" fill="url(#fl1)" opacity="0.6" />
+          </svg>
+          <span class="font-display font-800 text-lg text-white" style="font-weight:800;">FlyVark<span class="gradient-text"> AI</span></span>
+        </div>
+        <p class="text-sm leading-relaxed mb-6" style="color:rgba(255,255,255,0.45);">Autonomous AI agents that transform how modern enterprises discover, build, and scale.</p>
 
-          <div class="flex gap-3">
-            <a href="https://x.com/FlyVarkAI" target="_blank"
-              class="w-9 h-9 rounded-lg flex items-center justify-center transition-colors"
-              style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1);"
-              onmouseover="this.style.background='rgba(0,210,255,0.15)'; this.style.borderColor='var(--electric)'"
-              onmouseout="this.style.background='rgba(255,255,255,0.06)'; this.style.borderColor='rgba(255,255,255,0.1)'">
-              <i data-lucide="twitter" class="w-4 h-4" style="color:#ffffff"></i>
-            </a>
+        <div class="flex gap-3">
+          <a href="https://x.com/@flyvarkAI" target="_blank"
+            class="w-9 h-9 rounded-lg flex items-center justify-center transition-colors"
+            style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); cursor: pointer; position: relative; z-index: 10;"
+            onmouseover="this.style.background='rgba(0,210,255,0.15)'; this.style.borderColor='var(--electric)'"
+            onmouseout="this.style.background='rgba(255,255,255,0.06)'; this.style.borderColor='rgba(255,255,255,0.1)'">
+            <i data-lucide="twitter" class="w-4 h-4" style="color:#ffffff"></i>
+          </a>
 
-            <a href="https://linkedin.com/company/flyvarkai" target="_blank"
-              class="w-9 h-9 rounded-lg flex items-center justify-center transition-colors"
-              style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1);"
-              onmouseover="this.style.background='rgba(0,210,255,0.15)'; this.style.borderColor='var(--electric)'"
-              onmouseout="this.style.background='rgba(255,255,255,0.06)'; this.style.borderColor='rgba(255,255,255,0.1)'">
-              <i data-lucide="linkedin" class="w-4 h-4" style="color:#ffffff"></i>
-            </a>
+          <a href="https://linkedin.com/company/flyvarkai" target="_blank"
+            class="w-9 h-9 rounded-lg flex items-center justify-center transition-colors"
+            style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); cursor: pointer; position: relative; z-index: 10;"
+            onmouseover="this.style.background='rgba(0,210,255,0.15)'; this.style.borderColor='var(--electric)'"
+            onmouseout="this.style.background='rgba(255,255,255,0.06)'; this.style.borderColor='rgba(255,255,255,0.1)'">
+            <i data-lucide="linkedin" class="w-4 h-4" style="color:#ffffff"></i>
+          </a>
+
 
             <a href="mailto:hello@flyvark.com"
               class="w-9 h-9 rounded-lg flex items-center justify-center transition-colors"
-              style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1);"
+              style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); cursor: pointer; position: relative; z-index: 10;"
               onmouseover="this.style.background='rgba(0,210,255,0.15)'; this.style.borderColor='var(--electric)'"
               onmouseout="this.style.background='rgba(255,255,255,0.06)'; this.style.borderColor='rgba(255,255,255,0.1)'">
               <i data-lucide="mail" class="w-4 h-4" style="color:#ffffff"></i>
             </a>
-          </div>
+
         </div>
       </div>
 
@@ -1252,20 +2008,15 @@
           style="color:rgba(255,255,255,0.35); font-weight:700;">Solutions</h5>
         <ul class="space-y-2.5">
           <li><a href="#" class="text-sm transition-colors" style="color:rgba(255,255,255,0.6);"
-              onmouseover="this.style.color='#00d2ff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Agentic
-              Workflows</a></li>
+              onmouseover="this.style.color='#00d2ff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Agentic Workflows</a></li>
           <li><a href="#" class="text-sm transition-colors" style="color:rgba(255,255,255,0.6);"
-              onmouseover="this.style.color='#00d2ff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">LLM
-              Integration</a></li>
+              onmouseover="this.style.color='#00d2ff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">LLM Integration</a></li>
           <li><a href="#" class="text-sm transition-colors" style="color:rgba(255,255,255,0.6);"
-              onmouseover="this.style.color='#00d2ff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Predictive
-              Intelligence</a></li>
+              onmouseover="this.style.color='#00d2ff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Predictive Intelligence</a></li>
           <li><a href="#" class="text-sm transition-colors" style="color:rgba(255,255,255,0.6);"
-              onmouseover="this.style.color='#00d2ff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">AI
-              Governance</a></li>
+              onmouseover="this.style.color='#00d2ff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">AI Governance</a></li>
           <li><a href="#" class="text-sm transition-colors" style="color:rgba(255,255,255,0.6);"
-              onmouseover="this.style.color='#00d2ff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Multi-Agent
-              Systems</a></li>
+              onmouseover="this.style.color='#00d2ff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Multi-Agent Systems</a></li>
         </ul>
       </div>
 
@@ -1274,20 +2025,15 @@
           style="color:rgba(255,255,255,0.35); font-weight:700;">Company</h5>
         <ul class="space-y-2.5">
           <li><a href="#" class="text-sm transition-colors" style="color:rgba(255,255,255,0.6);"
-              onmouseover="this.style.color='#00d2ff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">About
-              FlyVark</a></li>
+              onmouseover="this.style.color='#00d2ff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">About FlyVark</a></li>
           <li><a href="#" class="text-sm transition-colors" style="color:rgba(255,255,255,0.6);"
-              onmouseover="this.style.color='#00d2ff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Our
-              Research</a></li>
+              onmouseover="this.style.color='#00d2ff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Our Research</a></li>
           <li><a href="#" class="text-sm transition-colors" style="color:rgba(255,255,255,0.6);"
-              onmouseover="this.style.color='#00d2ff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Case
-              Studies</a></li>
+              onmouseover="this.style.color='#00d2ff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Case Studies</a></li>
           <li><a href="#" class="text-sm transition-colors" style="color:rgba(255,255,255,0.6);"
-              onmouseover="this.style.color='#00d2ff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Careers</a>
-          </li>
+              onmouseover="this.style.color='#00d2ff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Careers</a></li>
           <li><a href="#" class="text-sm transition-colors" style="color:rgba(255,255,255,0.6);"
-              onmouseover="this.style.color='#00d2ff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Blog</a>
-          </li>
+              onmouseover="this.style.color='#00d2ff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Blog</a></li>
         </ul>
       </div>
 
@@ -1298,17 +2044,20 @@
           <li class="flex items-center gap-2.5">
             <i data-lucide="mail" class="w-4 h-4 flex-shrink-0" style="color:var(--electric)"></i>
             <a href="mailto:hello@flyvark.com" class="text-sm hover:text-white transition-colors"
-              style="color: rgba(255, 255, 255, 0.6);">hello@flyvark.com</a>
+                style="color: rgba(255, 255, 255, 0.6);"> hello@flyvark.com
+              </a>
           </li>
           <li class="flex items-center gap-2.5">
             <i data-lucide="map-pin" class="w-4 h-4 flex-shrink-0" style="color:var(--electric)"></i>
             <span class="text-sm" style="color:rgba(255,255,255,0.6);">San Francisco · London · Singapore</span>
           </li>
-          <li class="flex items-center gap-2.5">
+          <li class="flex items-center gap-2.5" style="position: relative; z-index: 10000;">
             <i data-lucide="calendar" class="w-4 h-4 flex-shrink-0" style="color:var(--electric)"></i>
-            <a href="#lead-form" class="text-sm transition-colors" style="color:rgba(255,255,255,0.6);"
-              onmouseover="this.style.color='#00d2ff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Book a
-              Session</a>
+            <a href="#contact" class="text-sm transition-colors cursor-pointer"
+              style="color: rgba(255, 255, 255, 0.6); display: inline-block; position: relative; z-index: 10001 !important; pointer-events: auto !important; text-decoration: none;"
+              onmouseover="this.style.color='#00d2ff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.6)'">
+              Book a Session
+            </a>
           </li>
         </ul>
       </div>
@@ -1317,7 +2066,7 @@
     <!-- Footer Bottom -->
     <div class="pt-8 flex flex-col md:flex-row items-center justify-between gap-4"
       style="border-top:1px solid rgba(255,255,255,0.07);">
-      <p class="text-xs" style="color:rgba(255,255,255,0.25);">© 2025 FlyVark AI. All rights reserved.</p>
+      <p class="text-xs" style="color:rgba(255,255,255,0.25);">© 2026 FlyVark AI. All rights reserved.</p>
       <div class="flex gap-6">
         <a href="#" class="text-xs transition-colors" style="color:rgba(255,255,255,0.3);"
           onmouseover="this.style.color='rgba(255,255,255,0.7)'"
@@ -1332,107 +2081,151 @@
       <p class="font-display font-700 text-xs tracking-widest uppercase"
         style="color:rgba(255,255,255,0.15); font-weight:700;">Discover · Build · Scale</p>
     </div>
-    </div>
-  </footer>
+  </div>
+</footer>
 
 
-  <!-- ════════════════════════════════════════════════════
-     JAVASCRIPT
+<!-- ════════════════════════════════════════════════════
+   JAVASCRIPT
 ════════════════════════════════════════════════════ -->
-  <script>
-    // ── Initialize Lucide Icons ──
-    lucide.createIcons();
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script>
+  // ── Initialize Lucide Icons ──
+  lucide.createIcons();
 
-    // ── Header Scroll Behavior ──
-    const header = document.getElementById('header');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 20) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
+  // ── Header Scroll Behavior ──
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 20) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  });
+
+  // ── Sticky Mobile Footer CTA ──
+  const stickyMobileCta = document.getElementById('sticky-mobile-cta');
+  const stickyClose = document.getElementById('sticky-close');
+  let stickyDismissed = false;
+
+  window.addEventListener('scroll', () => {
+    if (stickyDismissed) return;
+    // Show after scrolling 200px on mobile
+    if (window.scrollY > 200) {
+      stickyMobileCta.classList.add('visible');
+    } else {
+      stickyMobileCta.classList.remove('visible');
+    }
+  });
+
+  stickyClose.addEventListener('click', () => {
+    stickyDismissed = true;
+    stickyMobileCta.classList.remove('visible');
+  });
+
+  // ── Mobile Menu Toggle ──
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  menuToggle.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
+    const icon = menuToggle.querySelector('[data-lucide]');
+    if (mobileMenu.classList.contains('open')) {
+      icon.setAttribute('data-lucide', 'x');
+    } else {
+      icon.setAttribute('data-lucide', 'menu');
+    }
+    lucide.createIcons();
+  });
+
+  // Close mobile menu on link click
+  document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      const icon = menuToggle.querySelector('[data-lucide]');
+      icon.setAttribute('data-lucide', 'menu');
+      lucide.createIcons();
+    });
+  });
+
+  // ── Scroll Reveal ──
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    },
+    { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+  );
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  // ── Smooth Scroll for Anchor Links ──
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        const offset = 80;
+        const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
       }
     });
+  });
 
-    // ── Mobile Menu Toggle ──
-    const menuToggle = document.getElementById('menu-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
-    menuToggle.addEventListener('click', () => {
-      mobileMenu.classList.toggle('open');
-      const icon = menuToggle.querySelector('[data-lucide]');
-      if (mobileMenu.classList.contains('open')) {
-        icon.setAttribute('data-lucide', 'x');
-      } else {
-        icon.setAttribute('data-lucide', 'menu');
+  // ── Stagger bento cards ──
+  document.querySelectorAll('.bento-card').forEach((card, i) => {
+    card.style.transitionDelay = `${i * 0.06}s`;
+  });
+
+  // ── Service cards stagger ──
+  document.querySelectorAll('.service-card').forEach((card, i) => {
+    card.style.transitionDelay = `${i * 0.05}s`;
+  });
+
+  // ── Email Input Validation Feedback ──
+  const emailInputs = document.querySelectorAll('input[type="email"]');
+  emailInputs.forEach(input => {
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const val = input.value.trim();
+        const isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
+        if (isValid) {
+          input.style.borderColor = 'rgba(0,210,255,0.7)';
+          input.value = '';
+          input.placeholder = '✓ We\'ll be in touch soon!';
+          setTimeout(() => { input.placeholder = 'Enter your work email'; }, 3000);
+        } else {
+          input.style.borderColor = 'rgba(255,80,80,0.6)';
+          setTimeout(() => { input.style.borderColor = 'rgba(255,255,255,0.15)'; }, 1500);
+        }
+      }
+    });
+  });
+
+  // ── FAQ Accordion ──
+  const faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(item => {
+    const trigger = item.querySelector('.faq-trigger');
+    trigger.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      faqItems.forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.faq-trigger').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        trigger.setAttribute('aria-expanded', 'true');
       }
       lucide.createIcons();
     });
+  });
 
-    // Close mobile menu on link click
-    document.querySelectorAll('.mobile-link').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.remove('open');
-        const icon = menuToggle.querySelector('[data-lucide]');
-        icon.setAttribute('data-lucide', 'menu');
-        lucide.createIcons();
-      });
-    });
+  // ── Re-run reveal observer on dynamic content ──
+  document.querySelectorAll('.reveal').forEach(el => {
+    revealObserver.observe(el);
+  });
+</script>
 
-    // ── Scroll Reveal ──
-    const revealObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
-    );
-    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-    // ── Smooth Scroll for Anchor Links ──
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          e.preventDefault();
-          const offset = 80;
-          const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
-          window.scrollTo({ top, behavior: 'smooth' });
-        }
-      });
-    });
-
-    // ── Stagger bento cards ──
-    document.querySelectorAll('.bento-card').forEach((card, i) => {
-      card.style.transitionDelay = `${i * 0.06}s`;
-    });
-
-    // ── Service cards stagger ──
-    document.querySelectorAll('.service-card').forEach((card, i) => {
-      card.style.transitionDelay = `${i * 0.05}s`;
-    });
-
-    // ── Email Input Validation Feedback ──
-    const emailInputs = document.querySelectorAll('input[type="email"]');
-    emailInputs.forEach(input => {
-      input.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') {
-          const val = input.value.trim();
-          const isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
-          if (isValid) {
-            input.style.borderColor = 'rgba(0,210,255,0.7)';
-            input.value = '';
-            input.placeholder = '✓ We\'ll be in touch soon!';
-            setTimeout(() => { input.placeholder = 'Enter your work email'; }, 3000);
-          } else {
-            input.style.borderColor = 'rgba(255,80,80,0.6)';
-            setTimeout(() => { input.style.borderColor = 'rgba(255,255,255,0.15)'; }, 1500);
-          }
-        }
-      });
-    });
-  </script>
 </body>
-
 </html>
