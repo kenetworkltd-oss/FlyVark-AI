@@ -29,7 +29,7 @@ Integration of Google Sheets for centralized lead database management.
 
 Phase 3: Scaling
 Expansion into Medical and Legal appointment triage.
-
 Deployment of SMS-based follow-up automations.
 
-[![Play Demo Video](https://img.shields.io/badge/▶_Watch_Project-demo-for honestroofinginc-Loom-blue?style=for-the-badge)](https://www.loom.com/share/b91560ef8f8c409981474f62201d3101)
+## Demo - Custom AI voice agent for Honest Roofing Inc
+[![Watch Project Demo](https://img.shields.io/badge/▶_Watch_Project_Demo-Honest_Roofing_Inc-blue?style=for-the-badge)](https://www.loom.com/share/b91560ef8f8c409981474f62201d3101)
