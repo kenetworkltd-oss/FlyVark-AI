@@ -1,6 +1,6 @@
-FlyVark AI is a specialized automation agency that transforms manual business bottlenecks into scalable, 24/7 autonomous systems. We specialize in building custom AI voice agents—like Sarah—tailored for the Medical, Legal, Property Management, and Home Service sectors.
+FlyVark AI is a specialized automation agency that transforms manual business bottlenecks into scalable, 24/7 autonomous systems. We specialize in building custom AI voice agents—like Sarah—tailored for the Medical, Legal, Property Management, and Home Service sectors. **Official Website:** <https://flyvark.com>
 
-Our Star Agent: Sarah
+Our Star Agent: Sarah https:
 Sarah is a high-performance AI receptionist capable of handling end-to-end customer lead generation and appointment booking. During live stress testing, Sarah successfully managed complex US-based service calls with high transcription accuracy and direct calendar integration.
 
 Technical Architecture Workflow:
@@ -32,11 +32,5 @@ Expansion into Medical and Legal appointment triage.
 
 Deployment of SMS-based follow-up automations.
 
-Brand Identity
-The FlyVark AI aesthetic reflects our commitment to precision and authority:
-
-Primary Navy (#0a1128): Representing the core strength of our systems.
-
-Geometric Accents: Electric Blue (#00d2ff) to Royal Blue (#3a7bd5) gradients symbolizing innovation and movement.
-
-Minimalism: A clean, white-space focused design philosophy (#ffffff).
+[![Project Demo Video](https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&auto=format&fit=crop&q=60)](https://www.loom.com/share/b91560ef8f8c409981474f62201d3101)
+*Click the image above to view the interactive demo video.*
