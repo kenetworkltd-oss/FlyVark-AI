@@ -32,4 +32,4 @@ Expansion into Medical and Legal appointment triage.
 
 Deployment of SMS-based follow-up automations.
 
-[![Play Demo Video](https://img.shields.io/badge/▶_Watch_Project_Walkthrough-Loom-blue?style=for-the-badge)](https://www.loom.com/share/b91560ef8f8c409981474f62201d3101)
+[![Play Demo Video](https://img.shields.io/badge/▶_Watch_Project-demo-for honestroofinginc-Loom-blue?style=for-the-badge)](https://www.loom.com/share/b91560ef8f8c409981474f62201d3101)
