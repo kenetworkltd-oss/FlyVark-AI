@@ -32,5 +32,4 @@ Expansion into Medical and Legal appointment triage.
 
 Deployment of SMS-based follow-up automations.
 
-[![Project Demo Video](https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&auto=format&fit=crop&q=60)](https://www.loom.com/share/b91560ef8f8c409981474f62201d3101)
-*Click the image above to view the interactive demo video.*
+[![Play Demo Video](https://img.shields.io/badge/▶_Watch_Project_Walkthrough-Loom-blue?style=for-the-badge)](https://www.loom.com/share/b91560ef8f8c409981474f62201d3101)
